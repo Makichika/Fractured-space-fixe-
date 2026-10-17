@@ -1,0 +1,118 @@
+MAP JAMMING FIX
+
+Close Fractured Space.
+Copy Makichika_MapJamming_P.pak into:
+spacegame/Content/Paks
+
+Default Steam location:
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks
+
+Restart the game.
+
+DRAFT MENU FIXES
+
+Close the game. Back up the three files before editing.
+Use Notepad++ or Visual Studio Code. Keep UTF-8 and the existing line endings.
+Use your own Space folder if the game is installed elsewhere.
+Apply each step once. If REPLACE WITH is already present, skip that step.
+
+1. READY BUTTON
+
+Open:
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResources\frontend\drafting\drafting-script.js
+
+Find the condition inside function setDraftingState(state).
+
+FIND:
+if (state == DRAFTING_STAGES.WaitingforUsers || state == DRAFTING_STAGES.BalancingTeams) {
+
+REPLACE WITH:
+if (state == DRAFTING_STAGES.BalancingTeams) {
+
+2. MODE NAMES AND ARTWORK
+
+Open:
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResources\frontend\drafting\mode-selector.js
+
+A. Mode constants
+
+FIND:
+    CONQUEST: 'conquest',
+
+REPLACE WITH:
+    CONQUEST: 'conquest',
+    CONQUEST3V3: 'conquest3v3',
+    FRONTLINE: 'frontline',
+
+B. Mode name matching
+
+FIND:
+      switch(mode.Name) {
+
+REPLACE WITH:
+      switch(mode.Name.toLowerCase()) {
+
+C. Mode labels
+
+FIND:
+        case MODES.CONQUEST:
+          l10n = utils.l10n.get('GameModeConquestLabel');
+          break;
+
+REPLACE WITH:
+        case MODES.CONQUEST:
+          l10n = utils.l10n.get('GameModeConquestLabel');
+          break;
+        case MODES.CONQUEST3V3:
+          l10n = utils.l10n.get('GameModeConquest3v3Label');
+          break;
+        case MODES.FRONTLINE:
+          l10n = utils.l10n.get('GameModeFrontlineLabel');
+          break;
+
+D. Artwork selection
+
+FIND:
+ModeSelector.prototype.TEMPLATE_MODE = function templateBuilder(name, id, l10n, rewardBonusObj) {
+
+REPLACE WITH:
+ModeSelector.prototype.TEMPLATE_MODE = function templateBuilder(name, id, l10n, rewardBonusObj) {
+    let modeName = name.toLowerCase();
+    let imagePath = modeName === MODES.FRONTLINE
+      ? './views/gamemodes/images/medium/solo-frontline.png'
+      : './drafting/modes/' + (modeName === MODES.CONQUEST3V3 ? MODES.CONQUEST : modeName) + '.png';
+
+E. Artwork image
+
+FIND:
+background-image: url(./drafting/modes/${name}.png);
+
+REPLACE WITH:
+background-image: url(${imagePath});
+
+3. MODE LIST
+
+Open:
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResources\frontend\drafting\drafting-style.css
+
+FIND:
+.selector .selector-mode ul li {position: relative;height: 100%;}
+
+REPLACE WITH:
+.selector .selector-mode ul li {position: relative;height: 100%;}
+
+.selector .selector-mode ul {
+  grid-template-rows: none;
+  grid-auto-rows: 112px;
+  grid-row-gap: 24px;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 2px 8px;
+}
+
+FINISH
+
+Save all three files. Keep their original .js and .css extensions.
+Restart the game.
+To undo: close the game and restore your three backups.
