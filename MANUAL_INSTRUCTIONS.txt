@@ -19,7 +19,8 @@ spacegame/Content/UIResources/frontend/drafting/mode-selector.js
 spacegame/Content/UIResources/frontend/drafting/drafting-style.css
 
 Copy the included spacegame folder into your Space game folder.
-Merge the existing folders and replace the three matching files.
+Merge the existing folders and replace the matching files.
+This also installs the map jamming file described in section 3 below.
 Do not delete or replace the entire existing spacegame folder.
 No manual editing is needed.
 
@@ -40,7 +41,11 @@ C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Binaries\Win64
 
 3. Map jamming fix
 
-Copy Makichika_MapJamming_P.pak from the root of this repository into:
+The repository includes this ready-to-use file:
+spacegame/Content/Paks/Makichika_MapJamming_P.pak
+
+It is installed when you copy the included spacegame folder in section 1.
+To install only this fix, copy Makichika_MapJamming_P.pak into:
 Space/spacegame/Content/Paks
 
 Default full destination:
