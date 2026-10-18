@@ -78,8 +78,9 @@ BalancingTeams restriction and the existing native Ready request.
 
 mode-selector.js adds Conquest 3v3 and Frontline labels, matches mode names
 without case sensitivity, uses the existing Conquest artwork for Conquest 3v3,
-and uses the existing solo-frontline artwork for Frontline. Other artwork
-paths use lower-case mode names. Existing mode IDs and vote calls are retained.
+and uses the existing solo-frontline artwork for Frontline. Last Stand uses
+the existing GameModeLastStandGameMode label and medium/last-stand.png artwork
+for the internal horde mode. Other artwork paths use lower-case mode names. Existing mode IDs and vote calls are retained.
 
 drafting-style.css gives the mode list automatic 112px rows, 24px row gaps,
 vertical scrolling, no horizontal scrolling, and 2px 8px padding.
@@ -113,6 +114,7 @@ REPLACE WITH:
     CONQUEST: 'conquest',
     CONQUEST3V3: 'conquest3v3',
     FRONTLINE: 'frontline',
+    HORDE: 'horde',
 
 B. Mode name matching
 
@@ -139,6 +141,9 @@ REPLACE WITH:
         case MODES.FRONTLINE:
           l10n = utils.l10n.get('GameModeFrontlineLabel');
           break;
+        case MODES.HORDE:
+          l10n = utils.l10n.get('GameModeLastStandGameMode');
+          break;
 
 D. Artwork selection
 
@@ -150,7 +155,9 @@ ModeSelector.prototype.TEMPLATE_MODE = function templateBuilder(name, id, l10n, 
     let modeName = name.toLowerCase();
     let imagePath = modeName === MODES.FRONTLINE
       ? './views/gamemodes/images/medium/solo-frontline.png'
-      : './drafting/modes/' + (modeName === MODES.CONQUEST3V3 ? MODES.CONQUEST : modeName) + '.png';
+      : modeName === MODES.HORDE
+        ? './views/gamemodes/images/medium/last-stand.png'
+        : './drafting/modes/' + (modeName === MODES.CONQUEST3V3 ? MODES.CONQUEST : modeName) + '.png';
 
 E. Artwork image
 
@@ -231,7 +238,7 @@ Space/spacegame/Content/UIResources/frontend/drafting/drafting-script.js
 SHA256 974D60215C7D17102B50B2D232C54C712279A6E2FA2120F1C9089F446B9A2F27
 
 Space/spacegame/Content/UIResources/frontend/drafting/mode-selector.js
-SHA256 98B85DC90655A9DAAE00C7DCA48DED1C78A039F57A1FDE4DD9D44C616C4869F5
+SHA256 3970F112DC73780901AE7C137718F492C6CAA212EBB8AD39C909CC03E078FFCD
 
 Space/spacegame/Content/UIResources/frontend/drafting/drafting-style.css
 SHA256 141794CD40FFBF06C30D3F05CDAEA2BE05FC6C60384143922B7DBF5DD6B45079

@@ -4,6 +4,7 @@ var ModeSelector = (function ModeSelector() {
     CONQUEST: 'conquest',
     CONQUEST3V3: 'conquest3v3',
     FRONTLINE: 'frontline',
+    HORDE: 'horde',
     DISCOVERY: 'discovery',
     RIFT: 'rift',
     PAYLOAD: 'payload',
@@ -58,6 +59,9 @@ var ModeSelector = (function ModeSelector() {
         case MODES.FRONTLINE:
           l10n = utils.l10n.get('GameModeFrontlineLabel');
           break;
+        case MODES.HORDE:
+          l10n = utils.l10n.get('GameModeLastStandGameMode');
+          break;
         case MODES.DISCOVERY:
           l10n = utils.l10n.get('GameModeDiscoveryGameMode');
           break;
@@ -93,7 +97,9 @@ var ModeSelector = (function ModeSelector() {
     let modeName = name.toLowerCase();
     let imagePath = modeName === MODES.FRONTLINE
       ? './views/gamemodes/images/medium/solo-frontline.png'
-      : './drafting/modes/' + (modeName === MODES.CONQUEST3V3 ? MODES.CONQUEST : modeName) + '.png';
+      : modeName === MODES.HORDE
+        ? './views/gamemodes/images/medium/last-stand.png'
+        : './drafting/modes/' + (modeName === MODES.CONQUEST3V3 ? MODES.CONQUEST : modeName) + '.png';
     return `<li class="mode" data-id="${id}">
               <div class="mode-bonus-reward" data-bonus-active="${rewardBonusObj.active}" data-bonus-type="${rewardBonusObj.type}" data-tooltip="${rewardBonusObj.tooltip}" data-tooltip-align="above center">
                 <span>x${rewardBonusObj.bonus}</span>
