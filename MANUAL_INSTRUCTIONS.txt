@@ -9,6 +9,41 @@ C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks
 
 Restart the game.
 
+HUD PLAYER LIST FIX
+
+Author: Makichika
+
+Fixes an incomplete player and bot list on the drafting screen.
+This is a client update. Each player who needs this fix must install it.
+
+1. Close Fractured Space.
+2. Download Fractured Space.exe from this repository.
+   On its GitHub file page, use Download raw file.
+3. Open your game's folder:
+   spacegame/Binaries/Win64
+4. Back up your existing Fractured Space.exe outside this folder.
+   Keep the backup so you can undo the change.
+5. Copy the downloaded Fractured Space.exe into this folder.
+   Replace the existing file. Keep the exact filename Fractured Space.exe.
+6. Restart the game using your usual launcher.
+
+Default Steam folder:
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Binaries\Win64
+
+To undo: close the game and restore your original executable backup.
+Installing another executable replaces any earlier changes inside that executable.
+The Ready button, mode names, artwork and mode list fixes still use the steps below.
+This executable is not a confirmed fix for pre-draft chat delivery.
+
+Tested client SHA256 before the HUD fix:
+FA6288C2D914366E14175C1D9EBBB459F6BD605C348B6148E9EEA33D7290BC2A
+
+SHA256 of the supplied executable:
+D3977E731EE5636859174B323B761A7F510D8C76FC64FB904E35BD1B1CE185F6
+
+The fix passed offline native instruction checks and was reported working
+by the user in a gameplay test. Other client builds have not been verified.
+
 DRAFT MENU FIXES
 
 Close the game. Back up the three files before editing.
