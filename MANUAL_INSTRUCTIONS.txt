@@ -1,55 +1,57 @@
 INSTALLATION
 
-Close Fractured Space. Back up the files you will replace outside the game folder.
+Close Fractured Space. Back up each file before replacing it.
 Download this repository with Code > Download ZIP, then extract it.
-Do not copy the ZIP itself into the game.
+Do not copy the ZIP or the whole downloaded folder into the game.
+Copy only the individual files to the exact matching destinations below.
 
-Your game folder is the Space folder containing spacegame.
+The included Space folder shows the full path from the game folder.
+Your own Space folder is the one containing spacegame.
 Default Steam game folder:
 C:\Program Files (x86)\Steam\steamapps\common\Space
 Use your actual installation folder if it is different.
+Do not create a second Space folder inside your existing Space folder.
 
 COPY THESE FILES TO THESE LOCATIONS
 
 1. Draft menu files
 
-The repository includes these three ready-to-use files:
-spacegame/Content/UIResources/frontend/drafting/drafting-script.js
-spacegame/Content/UIResources/frontend/drafting/mode-selector.js
-spacegame/Content/UIResources/frontend/drafting/drafting-style.css
+Copy these three individual files to the same paths in your game:
+Space/spacegame/Content/UIResources/frontend/drafting/drafting-script.js
+Space/spacegame/Content/UIResources/frontend/drafting/mode-selector.js
+Space/spacegame/Content/UIResources/frontend/drafting/drafting-style.css
 
-Copy the included spacegame folder into your Space game folder.
-Merge the existing folders and replace the matching files.
-This also installs the map jamming file described in section 3 below.
-Do not delete or replace the entire existing spacegame folder.
-No manual editing is needed.
-
-All three files belong in:
+Full folder path from Space:
 Space/spacegame/Content/UIResources/frontend/drafting
 
-Default full destination:
+Default full destination folder:
 C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResources\frontend\drafting
+
+Replace only the matching files. No manual editing is needed.
 
 2. Draft player list HUD fix
 
-Copy Fractured Space.exe from the root of this repository into:
+Copy this individual file to the same path in your game:
+Space/spacegame/Binaries/Win64/Fractured Space.exe
+
+Full folder path from Space:
 Space/spacegame/Binaries/Win64
-Replace the existing Fractured Space.exe. Keep that exact filename.
 
 Default full destination:
-C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Binaries\Win64
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Binaries\Win64\Fractured Space.exe
+
+Replace the existing Fractured Space.exe. Keep that exact filename.
 
 3. Map jamming fix
 
-The repository includes this ready-to-use file:
-spacegame/Content/Paks/Makichika_MapJamming_P.pak
+Copy this individual file to the same path in your game:
+Space/spacegame/Content/Paks/Makichika_MapJamming_P.pak
 
-It is installed when you copy the included spacegame folder in section 1.
-To install only this fix, copy Makichika_MapJamming_P.pak into:
+Full folder path from Space:
 Space/spacegame/Content/Paks
 
 Default full destination:
-C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks\Makichika_MapJamming_P.pak
 
 Restart the game using your usual launcher.
 Each player who needs these client fixes installs them on their own computer.
@@ -225,11 +227,11 @@ SUPPLIED INTERFACE FILE CHECKSUMS
 
 These identify the full replacement files, not additional installation steps.
 
-spacegame/Content/UIResources/frontend/drafting/drafting-script.js
+Space/spacegame/Content/UIResources/frontend/drafting/drafting-script.js
 SHA256 974D60215C7D17102B50B2D232C54C712279A6E2FA2120F1C9089F446B9A2F27
 
-spacegame/Content/UIResources/frontend/drafting/mode-selector.js
+Space/spacegame/Content/UIResources/frontend/drafting/mode-selector.js
 SHA256 98B85DC90655A9DAAE00C7DCA48DED1C78A039F57A1FDE4DD9D44C616C4869F5
 
-spacegame/Content/UIResources/frontend/drafting/drafting-style.css
+Space/spacegame/Content/UIResources/frontend/drafting/drafting-style.css
 SHA256 141794CD40FFBF06C30D3F05CDAEA2BE05FC6C60384143922B7DBF5DD6B45079
