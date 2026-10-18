@@ -1,55 +1,83 @@
-MAP JAMMING FIX
+INSTALLATION
 
-Close Fractured Space.
-Copy Makichika_MapJamming_P.pak into:
-spacegame/Content/Paks
+Close Fractured Space. Back up the files you will replace outside the game folder.
+Download this repository with Code > Download ZIP, then extract it.
+Do not copy the ZIP itself into the game.
 
-Default Steam location:
+Your game folder is the Space folder containing spacegame.
+Default Steam game folder:
+C:\Program Files (x86)\Steam\steamapps\common\Space
+Use your actual installation folder if it is different.
+
+COPY THESE FILES TO THESE LOCATIONS
+
+1. Draft menu files
+
+The repository includes these three ready-to-use files:
+spacegame/Content/UIResources/frontend/drafting/drafting-script.js
+spacegame/Content/UIResources/frontend/drafting/mode-selector.js
+spacegame/Content/UIResources/frontend/drafting/drafting-style.css
+
+Copy the included spacegame folder into your Space game folder.
+Merge the existing folders and replace the three matching files.
+Do not delete or replace the entire existing spacegame folder.
+No manual editing is needed.
+
+All three files belong in:
+Space/spacegame/Content/UIResources/frontend/drafting
+
+Default full destination:
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResources\frontend\drafting
+
+2. Draft player list HUD fix
+
+Copy Fractured Space.exe from the root of this repository into:
+Space/spacegame/Binaries/Win64
+Replace the existing Fractured Space.exe. Keep that exact filename.
+
+Default full destination:
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Binaries\Win64
+
+3. Map jamming fix
+
+Copy Makichika_MapJamming_P.pak from the root of this repository into:
+Space/spacegame/Content/Paks
+
+Default full destination:
 C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks
 
-Restart the game.
+Restart the game using your usual launcher.
+Each player who needs these client fixes installs them on their own computer.
 
-HUD PLAYER LIST FIX
+These are complete replacement files. Replacing a file also replaces any other
+modifications inside that file. Other client builds have not been verified.
+Server game modes, timers, team rules and bots are configured separately.
+
+UNINSTALL
+
+Close the game. Restore the original files from your backups.
+If Makichika_MapJamming_P.pak was newly added, remove that file to undo its fix.
+
+
+EXACT CHANGES INCLUDED IN THE FILES
 
 Author: Makichika
 
-Fixes an incomplete player and bot list on the drafting screen.
-This is a client update. Each player who needs this fix must install it.
+The following section documents changes already included in the downloads.
+It is technical reference only. You do not need to perform these edits yourself.
 
-1. Close Fractured Space.
-2. Download Fractured Space.exe from this repository.
-   On its GitHub file page, use Download raw file.
-3. Open your game's folder:
-   spacegame/Binaries/Win64
-4. Back up your existing Fractured Space.exe outside this folder.
-   Keep the backup so you can undo the change.
-5. Copy the downloaded Fractured Space.exe into this folder.
-   Replace the existing file. Keep the exact filename Fractured Space.exe.
-6. Restart the game using your usual launcher.
+drafting-script.js enables Ready during WaitingforUsers, while keeping the
+BalancingTeams restriction and the existing native Ready request.
 
-Default Steam folder:
-C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Binaries\Win64
+mode-selector.js adds Conquest 3v3 and Frontline labels, matches mode names
+without case sensitivity, uses the existing Conquest artwork for Conquest 3v3,
+and uses the existing solo-frontline artwork for Frontline. Other artwork
+paths use lower-case mode names. Existing mode IDs and vote calls are retained.
 
-To undo: close the game and restore your original executable backup.
-Installing another executable replaces any earlier changes inside that executable.
-The Ready button, mode names, artwork and mode list fixes still use the steps below.
-This executable is not a confirmed fix for pre-draft chat delivery.
+drafting-style.css gives the mode list automatic 112px rows, 24px row gaps,
+vertical scrolling, no horizontal scrolling, and 2px 8px padding.
 
-Tested client SHA256 before the HUD fix:
-FA6288C2D914366E14175C1D9EBBB459F6BD605C348B6148E9EEA33D7290BC2A
-
-SHA256 of the supplied executable:
-D3977E731EE5636859174B323B761A7F510D8C76FC64FB904E35BD1B1CE185F6
-
-The fix passed offline native instruction checks and was reported working
-by the user in a gameplay test. Other client builds have not been verified.
-
-DRAFT MENU FIXES
-
-Close the game. Back up the three files before editing.
-Use Notepad++ or Visual Studio Code. Keep UTF-8 and the existing line endings.
-Use your own Space folder if the game is installed elsewhere.
-Apply each step once. If REPLACE WITH is already present, skip that step.
+The exact before/after changes for these three files are listed below.
 
 1. READY BUTTON
 
@@ -146,8 +174,57 @@ REPLACE WITH:
   padding: 2px 8px;
 }
 
-FINISH
+4. FRACTURED SPACE.EXE
 
-Save all three files. Keep their original .js and .css extensions.
-Restart the game.
-To undo: close the game and restore your three backups.
+Fixes the cached drafting player list. The original client could keep a cached
+list containing only the first player even after more players or bots arrived.
+The new guard rejects an empty cache or a count different from the current
+PlayerArray count, allowing the existing native drafting Tick to rebuild it
+when its original initialization and readiness checks permit.
+
+Exactly 36 executable bytes change in two locations. File size, PE sections,
+exception/runtime tables, Ready flags, player IDs, stages and timers are preserved.
+
+File offset 0x3B3600, corresponding RVA 0x3B4000:
+Before:
+48 89 5C 24 10
+After:
+E9 4B 23 CC FF
+
+File offset 0x75950, corresponding RVA 0x76350:
+Before:
+CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC
+After:
+8B 81 58 04 00 00 85 C0 7E 12 3B 81 38 03 00 00 75 0A 48 89 5C 24 10 E9 99 DC 33 00 31 C0 C3
+
+The guard compares GameState+0x458 (cached count) to GameState+0x338
+(actual count). On a valid count it executes the displaced original instruction
+and resumes at RVA 0x3B4005, retaining the original individual-ID checks.
+
+Tested executable SHA256 before the HUD fix:
+FA6288C2D914366E14175C1D9EBBB459F6BD605C348B6148E9EEA33D7290BC2A
+Supplied executable SHA256:
+D3977E731EE5636859174B323B761A7F510D8C76FC64FB904E35BD1B1CE185F6
+
+66 focused offline native instruction cases passed with engine dependencies
+mocked. The user reported the correction working in a gameplay test. This does
+not establish every mode or join sequence, and is not a confirmed chat fix.
+
+5. MAKICHIKA_MAPJAMMING_P.PAK
+
+This is the separate map jamming fix already included in this repository.
+Its contents are unchanged by this replacement-file update.
+
+
+SUPPLIED INTERFACE FILE CHECKSUMS
+
+These identify the full replacement files, not additional installation steps.
+
+spacegame/Content/UIResources/frontend/drafting/drafting-script.js
+SHA256 974D60215C7D17102B50B2D232C54C712279A6E2FA2120F1C9089F446B9A2F27
+
+spacegame/Content/UIResources/frontend/drafting/mode-selector.js
+SHA256 98B85DC90655A9DAAE00C7DCA48DED1C78A039F57A1FDE4DD9D44C616C4869F5
+
+spacegame/Content/UIResources/frontend/drafting/drafting-style.css
+SHA256 141794CD40FFBF06C30D3F05CDAEA2BE05FC6C60384143922B7DBF5DD6B45079
