@@ -53,17 +53,35 @@ Space/spacegame/Content/Paks
 Default full destination:
 C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks\Makichika_MapJamming_P.pak
 
+4. Venturer skin fix
+
+Copy this individual file to the same path in your game:
+Space/spacegame/Content/Paks/Makichika_VenturerSkins_P.pak
+
+Full folder path from Space:
+Space/spacegame/Content/Paks
+
+Default full destination:
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks\Makichika_VenturerSkins_P.pak
+
+This fix only needs this one additional pak file on each player's computer.
+It can be installed on its own. No server change or executable replacement
+is required for the Venturer skin fix. Keep the other installed fixes.
+
 Restart the game using your usual launcher.
 Each player who needs these client fixes installs them on their own computer.
 
-These are complete replacement files. Replacing a file also replaces any other
-modifications inside that file. Other client builds have not been verified.
+The draft menu files and executable are complete replacement files. Replacing
+one also replaces any other modifications inside that file. The two pak fixes
+are additional files. Other client builds have not been verified.
 Server game modes, timers, team rules and bots are configured separately.
 
 UNINSTALL
 
 Close the game. Restore the original files from your backups.
 If Makichika_MapJamming_P.pak was newly added, remove that file to undo its fix.
+To undo the Venturer skin fix, remove only Makichika_VenturerSkins_P.pak,
+or rename it to Makichika_VenturerSkins_P.pak.disabled. Keep the original BP.pak.
 
 
 EXACT CHANGES INCLUDED IN THE FILES
@@ -230,7 +248,33 @@ This is the separate map jamming fix already included in this repository.
 Its contents are unchanged by this replacement-file update.
 
 
-SUPPLIED INTERFACE FILE CHECKSUMS
+6. MAKICHIKA_VENTURERSKINS_P.PAK
+
+Corrects material bindings for the fourteen existing Venturer skin definitions.
+The original Swarm bindings placed the neutral silver material on the main
+hull panels and the blue skin material on small structural parts. Swarm and
+Swarm II also had replacement bindings only for the highest-detail model.
+
+The fix resolves the original skin palettes to the current mesh material
+slots and supplies consistent bindings across the four detail levels.
+Lower-detail models merge some surface regions; exact fine-detail equivalence
+between every distance and every historical skin image has not been verified.
+
+Only BP_SHP_MID_M00_C018_Venturer is overridden: one uasset/uexp pair.
+One component's skin bindings change; the other 113 export payloads are
+byte-identical. Existing textures, mesh geometry and skin identifiers remain
+unchanged. Other ships, the executable and server files are not modified.
+
+Offline checks passed for 366 bindings, package round trips and pak index/
+payload integrity. The user reported the repaired appearance working in a
+gameplay test. This is not an exhaustive visual test of all fourteen skins
+at every distance or proof of installation on every other client build.
+
+Supplied pak size: 139180 bytes.
+SHA256 B5DD72B42563C75DA64883903A57F151919C119A86AD90BDC6CA26072DEDB997
+
+
+SUPPLIED FILE CHECKSUMS
 
 These identify the full replacement files, not additional installation steps.
 
@@ -242,3 +286,6 @@ SHA256 3970F112DC73780901AE7C137718F492C6CAA212EBB8AD39C909CC03E078FFCD
 
 Space/spacegame/Content/UIResources/frontend/drafting/drafting-style.css
 SHA256 141794CD40FFBF06C30D3F05CDAEA2BE05FC6C60384143922B7DBF5DD6B45079
+
+Space/spacegame/Content/Paks/Makichika_VenturerSkins_P.pak
+SHA256 B5DD72B42563C75DA64883903A57F151919C119A86AD90BDC6CA26072DEDB997
