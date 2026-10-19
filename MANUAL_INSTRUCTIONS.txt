@@ -29,7 +29,7 @@ C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResource
 
 Replace only the matching files. No manual editing is needed.
 
-2. Draft player list HUD fix
+2. Client executable: draft player list and missile warning fixes
 
 Copy this individual file to the same path in your game:
 Space/spacegame/Binaries/Win64/Fractured Space.exe
@@ -41,6 +41,11 @@ Default full destination:
 C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Binaries\Win64\Fractured Space.exe
 
 Replace the existing Fractured Space.exe. Keep that exact filename.
+
+This single executable includes both the drafting player list fix and the
+incoming missile icon and alert cleanup fix. If you already installed the
+other files, updating the missile fix only requires replacing this executable.
+Close and restart the game; copying the file does not update a running client.
 
 3. Map jamming fix
 
@@ -208,6 +213,8 @@ REPLACE WITH:
 
 4. FRACTURED SPACE.EXE
 
+A. Drafting player list fix (retained)
+
 Fixes the cached drafting player list. The original client could keep a cached
 list containing only the first player even after more players or bots arrived.
 The new guard rejects an empty cache or a count different from the current
@@ -235,12 +242,70 @@ and resumes at RVA 0x3B4005, retaining the original individual-ID checks.
 
 Tested executable SHA256 before the HUD fix:
 FA6288C2D914366E14175C1D9EBBB459F6BD605C348B6148E9EEA33D7290BC2A
-Supplied executable SHA256:
+Executable SHA256 after the drafting HUD fix, before the missile update:
 D3977E731EE5636859174B323B761A7F510D8C76FC64FB904E35BD1B1CE185F6
 
 66 focused offline native instruction cases passed with engine dependencies
 mocked. The user reported the correction working in a gameplay test. This does
 not establish every mode or join sequence, and is not a confirmed chat fix.
+
+B. Incoming missile icon and alert cleanup fix (19 October 2026)
+
+The client can retain a destroyed missile briefly to finish its particle
+trail. Its red HUD icon and incoming warning beep could remain active during
+that visual cleanup. The icon and sound queries now ignore destroyed or
+trail-cleanup missiles without waiting for the retained actor to disappear.
+Another living missile can still trigger its warning. The original warning
+configuration is preserved; the fix does not permanently disable the alert
+or require a respawn between successive missile salvos.
+
+This is a client fix installed by each player. It does not change server
+files, missile damage, point defense, particle trail lifetime or audio banks.
+Slowing the server can prolong game-time cleanup; that alone does not prove
+the HUD cleanup is controlled by the server.
+
+Relative to the previously supplied executable D3977E731EE5636859174B323B761A7F510D8C76FC64FB904E35BD1B1CE185F6,
+39 bytes change across the following four regions. The drafting HUD
+correction above remains byte-identical. File size remains 62232064 bytes;
+PE sections and existing exception/runtime tables are preserved.
+
+File offset 0x33E7E7, corresponding RVA 0x33F1E7:
+Before: D1 E9 F6 C1 01
+After:  F6 C1 06 90 90
+
+File offset 0x3BB1CB, corresponding RVA 0x3BBBCB:
+Before: 80 B8 61 03 00 00 00
+After:  E8 B0 5E CD FF 90 90
+
+File offset 0x3AE98B, corresponding RVA 0x3AF38B:
+Before: 40 38 B8 61 03 00 00
+After:  E8 F0 26 CE FF 90 90
+
+File offset 0x91080, corresponding RVA 0x91A80:
+Before: CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC CC
+After:  F6 80 48 06 00 00 06 75 08 80 B8 61 03 00 00 00 C3 39 C0 C3
+
+The HUD predicate now excludes destroyed and trail-cleanup state bits.
+Both sound queries use the same read-only state and configuration check.
+The helper uses verified unused executable padding; it writes no projectile
+field and preserves registers. No additional installation step is required.
+
+SHA256 of the supplied executable:
+7D3930AF7DFF6882A027C53BD706476D1E78CE3110F3E4D07322AFC2BCEBCB9F
+
+Offline checks execute the new instructions and original native query loops
+at two simulated ASLR bases, with engine weak-reference helpers modeled.
+Checks cover 512 state/configuration combinations per base and 64 repeated
+live/cleanup/destroyed/live cycles per base without resetting the warning
+configuration, plus surviving and intentionally silent missile cases.
+This is not a test inside Unreal. Gameplay confirmation of this missile
+revision, successive audible alerts without respawning, slow-motion behavior
+and installation on another computer remain unconfirmed.
+
+To test after restarting: receive and destroy several successive missile
+salvos without respawning. Each new live salvo should trigger the alert;
+destroyed missiles should lose their icon and warning promptly. A surviving
+missile must keep its warning. Repeat at normal speed and slow motion.
 
 5. MAKICHIKA_MAPJAMMING_P.PAK
 
@@ -277,6 +342,9 @@ SHA256 B5DD72B42563C75DA64883903A57F151919C119A86AD90BDC6CA26072DEDB997
 SUPPLIED FILE CHECKSUMS
 
 These identify the full replacement files, not additional installation steps.
+
+Space/spacegame/Binaries/Win64/Fractured Space.exe
+SHA256 7D3930AF7DFF6882A027C53BD706476D1E78CE3110F3E4D07322AFC2BCEBCB9F
 
 Space/spacegame/Content/UIResources/frontend/drafting/drafting-script.js
 SHA256 974D60215C7D17102B50B2D232C54C712279A6E2FA2120F1C9089F446B9A2F27
