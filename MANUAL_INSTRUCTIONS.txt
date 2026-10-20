@@ -12,6 +12,35 @@ C:\Program Files (x86)\Steam\steamapps\common\Space
 Use your actual installation folder if it is different.
 Do not create a second Space folder inside your existing Space folder.
 
+FOLDER STRUCTURE
+
+These are real folders inside one another, including folders that contain only
+the next folder. Each line below is one separate folder or file:
+
+Space/
+    spacegame/
+        Binaries/
+            Win64/
+                Fractured Space.exe
+        Content/
+            Paks/
+                Makichika_MapJamming_P.pak
+                Makichika_VenturerSkins_P.pak
+            UIResources/
+                frontend/
+                    drafting/
+                        drafting-script.js
+                        mode-selector.js
+                        drafting-style.css
+
+For the draft files, open Space, then spacegame, then Content, then UIResources,
+then frontend, then drafting. Put the three draft files inside drafting.
+
+On GitHub, UIResources/frontend/drafting may appear as one clickable line
+because each intermediate folder contains only the next folder. This is
+GitHub's compact folder display; the folders are still separate.
+Code > Download ZIP preserves all these separate nested folders.
+
 COPY THESE FILES TO THESE LOCATIONS
 
 1. Draft menu files
