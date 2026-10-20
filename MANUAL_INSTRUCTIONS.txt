@@ -26,6 +26,7 @@ Space/
             Paks/
                 Makichika_MapJamming_P.pak
                 Makichika_VenturerSkins_P.pak
+                Makichika_ProtectorShield_P.pak
             UIResources/
                 frontend/
                     drafting/
@@ -65,7 +66,7 @@ C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResource
 
 Replace only the matching files. No manual editing is needed.
 
-2. Client executable: draft player list and missile warning fixes
+2. Client executable: draft player list, missile warnings and effect clocks
 
 Copy this individual file to the same path in your game:
 Space/spacegame/Binaries/Win64/Fractured Space.exe
@@ -78,9 +79,13 @@ C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Binaries\Win64\Fra
 
 Replace the existing Fractured Space.exe. Keep that exact filename.
 
-This single executable includes both the drafting player list fix and the
-incoming missile icon and alert cleanup fix. If you already installed the
-other files, updating the missile fix only requires replacing this executable.
+This single executable includes the drafting player list fix, incoming missile
+icon and alert cleanup, and status effect clock compatibility. Replace only
+this executable to update these native client fixes.
+On a compatible server, effect countdowns follow game time and menu slow motion.
+On other servers, they retain the original timing. Finite HUD counters are
+clamped to zero instead of showing negative values. This client file does not
+install the server's Paladin Purge gameplay rules.
 Close and restart the game; copying the file does not update a running client.
 
 3. Map jamming fix
@@ -130,11 +135,31 @@ This is the standard online server browser with only the display-order change.
 It contains no saved-LAN integration or local bridge key. Replacing this file
 also replaces any existing customisations inside it; keep your backup.
 
+6. Protector shield field visual
+
+Copy this individual file to the same path in your game:
+Space/spacegame/Content/Paks/Makichika_ProtectorShield_P.pak
+
+Full folder path from Space:
+Space/spacegame/Content/Paks
+
+Default full destination:
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks\Makichika_ProtectorShield_P.pak
+
+Keep the original BP.pak and the other installed pak fixes.
+This additional client pak keeps the Protector's shared shield field visual
+separate from its personal Shield Self status. Purging the Protector should
+remove its personal protection while the active field remains visible for
+nearby allies. This visual pak does not change shield strength or Purge rules.
+Every player who wants the corrected visual needs this file on their computer.
+A complete client exit and relaunch is required after installation; changing
+server or map does not load a newly copied pak.
+
 Restart the game using your usual launcher.
 Each player who needs these client fixes installs them on their own computer.
 
 The draft menu files, optional startgame-script.js and executable are complete
-replacement files. Replacing one also replaces other modifications inside it. The two pak fixes
+replacement files. Replacing one also replaces other modifications inside it. The three pak fixes
 are additional files. Other client builds have not been verified.
 Server game modes, timers, team rules and bots are configured separately.
 
@@ -146,6 +171,8 @@ startgame-script.js to its matching destination. Do not delete the game script.
 If Makichika_MapJamming_P.pak was newly added, remove that file to undo its fix.
 To undo the Venturer skin fix, remove only Makichika_VenturerSkins_P.pak,
 or rename it to Makichika_VenturerSkins_P.pak.disabled. Keep the original BP.pak.
+To undo the Protector visual fix, remove only Makichika_ProtectorShield_P.pak,
+or rename it to Makichika_ProtectorShield_P.pak.disabled. Restart the client.
 
 
 EXACT CHANGES INCLUDED IN THE FILES
@@ -349,7 +376,7 @@ Both sound queries use the same read-only state and configuration check.
 The helper uses verified unused executable padding; it writes no projectile
 field and preserves registers. No additional installation step is required.
 
-SHA256 of the supplied executable:
+Historical SHA256 after missile fixes, before the effect clock update:
 7D3930AF7DFF6882A027C53BD706476D1E78CE3110F3E4D07322AFC2BCEBCB9F
 
 Offline checks execute the new instructions and original native query loops
@@ -365,6 +392,69 @@ To test after restarting: receive and destroy several successive missile
 salvos without respawning. Each new live salvo should trigger the alert;
 destroyed missiles should lose their icon and warning promptly. A surviving
 missile must keep its warning. Repeat at normal speed and slow motion.
+
+C. Status effect game time display (20 October 2026)
+
+The original visual status constructor and HUD use real time. The new client
+uses game time only after the connected server announces its matching clock
+capability through the existing reliable ClientMessage RPC. The announcement
+uses empty text, message type Makichika_Status_GameClock_v1 and lifetime zero.
+The client validates network client mode and weak world/NetDriver identities.
+Another world or connection requires a new announcement. Normal messages keep
+their original dispatch and parameters. Unmodified servers retain real-time
+timing; finite HUD countdowns are clamped to zero on all servers. Infinite
+status sentinel behavior is retained. This does not freeze time after a crash.
+
+Private visual object padding stores the clock domain and game birth time.
+Late capability converts existing effects without restarting their duration.
+The expiry getter presents the equivalent remaining game time to existing
+HUD and VFX consumers. Other native gameplay objects retain their old getter.
+Two new sections, .stclock (code) and .stdata (state/unwind), carry the patch.
+Existing drafting and missile fixes are preserved. All unrelated original
+bytes are verified unchanged outside the declared PE bookkeeping and hooks.
+
+Exact hook changes relative to the preceding missile executable:
+
+RVA 0x311D58, file offset 0x311358:
+Before: E833612E00
+After:  E8C355AF03
+
+RVA 0x5F81C2, file offset 0x5F77C2:
+Before: E8C9FCFFFF
+After:  E859F18003
+
+RVA 0x1A51B48, file offset 0x1A51148:
+Before: FF9008090000
+After:  E8D3563B0290
+
+RVA 0x5FE330, file offset 0x5FD930:
+Before: F30F104108
+After:  E9BB8D8003
+
+RVA 0x315E0D, file offset 0x31540D:
+Before: F3410F5CF0
+After:  E8EE51AF03
+
+RVA 0x317089, file offset 0x316689:
+Before: F3410F5CF0
+After:  E8723FAF03
+
+RVA 0x5F4BD5, file offset 0x5F41D5:
+Before: 66894104
+After:  89410490
+
+Supplied executable size: 64652288 bytes.
+Current supplied executable SHA256:
+C9D56D3E41462378A48A9D7F9FA57B952A3C945CC1AF236CFF90C754F0D2C6E8
+
+Verification executes 48 native x64 assertions at two ASLR bases and checks
+PE preservation, unwind records and Windows loader mapping. Unreal services
+are modeled as documented. Actual slow-motion alignment, real fallback on
+another server and installation on another computer remain unconfirmed.
+The server remains authoritative for status immunity and ability blocking.
+Clients without this clock patch can show mismatched countdowns in slow motion
+on a server using game-time statuses. The client patch alone does not add
+the server's five-second Paladin Purge behavior to an unmodified server.
 
 5. MAKICHIKA_MAPJAMMING_P.PAK
 
@@ -418,12 +508,40 @@ spectating, full/unjoinable entries and refresh handling. These checks use
 modeled engine/UI dependencies. In-game display after restart and installation
 on another player's computer remain unconfirmed.
 
+8. MAKICHIKA_PROTECTORSHIELD_P.PAK
+
+The standard Protector attaches its shared field graphic to the personal
+Shield Self status. Removing that status can hide the bubble while nearby
+allies retain Shielded. The patch moves only that visual class reference to
+the existing weapon MuzzleEffect lifecycle, as used by the Legendary variant.
+The field graphic follows the active ability instead of the personal buff.
+
+Only BP_SYS_ABLTY_SHIELDAOE_01 is overridden, one uasset/uexp pair.
+Export 4 adds MuzzleEffect=BP_VFX_MuzzleFlash_CorvetteShield_C and
+bRemoveMuzzleEffectIfWeaponInactive=true. Existing destruction cleanup stays
+enabled. Export 19 sets Shield Self VisualEffect to None. Its personal
+MaterialEffectName=Shielded remains attached to the removable personal status.
+The Legendary child keeps its own muzzle class and inherits parent cleanup.
+Seventeen other export payloads are byte-identical. Damage modifiers, allied
+Shielded metadata, categories, team filters, radius, duration, cost and
+cooldown retain their exact original values. No server or executable change
+is required for this separate visual pak.
+
+Original binary/JSON and patched binary round trips, readback and independent
+pak index/payload checks passed. A report that the visual still disappeared
+was traced to a client started before pak installation. Full client restart
+is required. Exhaustive standard/Legendary rendering, damage-reduction tests
+and cleanup on manual stop or destruction remain unconfirmed.
+
+Supplied pak size: 12772 bytes.
+SHA256 B9E91E096D327B464FBA32792BF6A0069A189907A1FA3422D725D894167837FC
+
 SUPPLIED FILE CHECKSUMS
 
 These identify the full replacement files, not additional installation steps.
 
 Space/spacegame/Binaries/Win64/Fractured Space.exe
-SHA256 7D3930AF7DFF6882A027C53BD706476D1E78CE3110F3E4D07322AFC2BCEBCB9F
+SHA256 C9D56D3E41462378A48A9D7F9FA57B952A3C945CC1AF236CFF90C754F0D2C6E8
 
 Space/spacegame/Content/UIResources/frontend/drafting/drafting-script.js
 SHA256 974D60215C7D17102B50B2D232C54C712279A6E2FA2120F1C9089F446B9A2F27
@@ -439,3 +557,6 @@ SHA256 B5DD72B42563C75DA64883903A57F151919C119A86AD90BDC6CA26072DEDB997
 
 Space/spacegame/Content/UIResources/frontend/views/startgame/startgame-script.js
 SHA256 1C62A37D09FC3930AA97E7B798C337E95CE1D24BE4829FA15E62EB23DE7711AF
+
+Space/spacegame/Content/Paks/Makichika_ProtectorShield_P.pak
+SHA256 B9E91E096D327B464FBA32792BF6A0069A189907A1FA3422D725D894167837FC
