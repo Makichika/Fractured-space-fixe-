@@ -10,6 +10,7 @@ All changes made so far. Client fixes are available on this GitHub; server fixes
 | **Client** | Fix the draft menu not showing other players for the first player joining pre-draft |
 | **Client** | Fix all Venturer skins |
 | **Client** | Fix missile red icons and warning sounds |
+
 | **Server** | Fix Aegis consuming energy twice when using its primary ability |
 | **Server** | Fix Last Stand crashes and force players onto the human team (team assignment fix by Tiger) |
 | **Server** | Enable the pre-draft lobby and drafting across all my servers |
