@@ -2,7 +2,7 @@
 
 All changes made so far. Client fixes are available on this GitHub; server fixes are installed on my servers.
 
-My servers are now automaticaly always showing if my PC is on but whitout using any ressource until someone join.
+My servers are now always showing in the server list if my PC is on but without using any ressource until someone join.
 
 ### Client fixes
 
