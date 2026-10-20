@@ -32,18 +32,3 @@ My servers are now always showing in the server list if my PC is on but without 
 | **Server** | Set pre-draft to a maximum of 1200 seconds; players can write "ready" to start drafting earlier |
 | **Server** | Allow players to vote on enemy bot difficulty in the PvE server; instructions appear in pre-draft chat |
 
-### Files and installation
-
-All complete client replacement files are stored in their real nested paths
-under `Space/`. Use the same layout for current and future fixes; do not add
-duplicate download files at the repository root. See [MANUAL_INSTRUCTIONS.txt](MANUAL_INSTRUCTIONS.txt)
-for exact installation destinations first, followed by the exact changes and
-verification limits. Fully close and relaunch the game after installing.
-
-The Paladin Purge gameplay change is installed on my servers: five seconds of
-negative-status immunity for allies or positive-status rejection for enemies,
-with Gamma objective rewards exempt. Personal-only bonus abilities are blocked;
-shared abilities remain usable. The client executable supplies the compatible
-clock display; this repository does not distribute the private server manager.
-
-Author: Makichika
