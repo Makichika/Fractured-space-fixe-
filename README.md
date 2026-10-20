@@ -31,4 +31,5 @@ My servers are now always showing in the server list if my PC is on but without 
 | **Server** | Force late arrivals to spectate on the locked Conquest server only |
 | **Server** | Set pre-draft to a maximum of 1200 seconds; players can write "ready" to start drafting earlier |
 | **Server** | Allow players to vote on enemy bot difficulty in the PvE server; instructions appear in pre-draft chat |
+| **Server** | Fixe the paladin purge actually be 5s, to not waste a cooldown, the enemy being purged can't activate self effect only (self boost etc) |
 
