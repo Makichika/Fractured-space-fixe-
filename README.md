@@ -11,7 +11,7 @@ My servers are now always showing in the server list if my PC is on but without 
 | **Client** | Fix Destroyer and Interceptor jamming |
 | **Client** | Enable the Ready button during pre-draft |
 | **Client** | Fix mode names, artwork and list scrolling in the draft menu |
-| **Client** | Fix the draft menu not showing other players for the first player joining pre-draft |
+| **Client** | Fix the draft menu not showing other players/bot in pre-draft |
 | **Client** | Fix all Venturer skins |
 | **Client** | Fix missile red icons and warning sounds |
 | **Client (optional)** | Group the online server list |
