@@ -32,6 +32,9 @@ Space/
                         drafting-script.js
                         mode-selector.js
                         drafting-style.css
+                    views/
+                        startgame/
+                            startgame-script.js
 
 For the draft files, open Space, then spacegame, then Content, then UIResources,
 then frontend, then drafting. Put the three draft files inside drafting.
@@ -40,6 +43,10 @@ On GitHub, UIResources/frontend/drafting may appear as one clickable line
 because each intermediate folder contains only the next folder. This is
 GitHub's compact folder display; the folders are still separate.
 Code > Download ZIP preserves all these separate nested folders.
+
+For the optional server list file, open Space, then spacegame, then Content,
+then UIResources, then frontend, then views, then startgame. Put
+startgame-script.js inside startgame. These are separate nested folders too.
 
 COPY THESE FILES TO THESE LOCATIONS
 
@@ -102,17 +109,40 @@ This fix only needs this one additional pak file on each player's computer.
 It can be installed on its own. No server change or executable replacement
 is required for the Venturer skin fix. Keep the other installed fixes.
 
+5. Online server list grouping (optional)
+
+Copy this individual file to the same path in your game:
+Space/spacegame/Content/UIResources/frontend/views/startgame/startgame-script.js
+
+Full folder path from Space:
+Space/spacegame/Content/UIResources/frontend/views/startgame
+
+Default full destination:
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResources\frontend\views\startgame\startgame-script.js
+
+Replace only the matching startgame-script.js after backing it up.
+This optional client file groups online servers in this order:
+heart-prefixed names first, Tiger-prefixed names second, all other servers last.
+It keeps the received order within each group. It adds no blank rows or headers.
+It can be installed on its own; no server change or executable replacement
+is needed for this optional feature. Each player chooses whether to install it.
+This is the standard online server browser with only the display-order change.
+It contains no saved-LAN integration or local bridge key. Replacing this file
+also replaces any existing customisations inside it; keep your backup.
+
 Restart the game using your usual launcher.
 Each player who needs these client fixes installs them on their own computer.
 
-The draft menu files and executable are complete replacement files. Replacing
-one also replaces any other modifications inside that file. The two pak fixes
+The draft menu files, optional startgame-script.js and executable are complete
+replacement files. Replacing one also replaces other modifications inside it. The two pak fixes
 are additional files. Other client builds have not been verified.
 Server game modes, timers, team rules and bots are configured separately.
 
 UNINSTALL
 
 Close the game. Restore the original files from your backups.
+To undo only the optional server grouping, restore your backed-up
+startgame-script.js to its matching destination. Do not delete the game script.
 If Makichika_MapJamming_P.pak was newly added, remove that file to undo its fix.
 To undo the Venturer skin fix, remove only Makichika_VenturerSkins_P.pak,
 or rename it to Makichika_VenturerSkins_P.pak.disabled. Keep the original BP.pak.
@@ -368,6 +398,26 @@ Supplied pak size: 139180 bytes.
 SHA256 B5DD72B42563C75DA64883903A57F151919C119A86AD90BDC6CA26072DEDB997
 
 
+7. STARTGAME-SCRIPT.JS (OPTIONAL)
+
+Sessions.onAddSessions collects three display groups before rendering:
+heart-prefixed names, Tiger-prefixed names, then everything else. Heart names
+may start with the literal heart character, a decimal or hexadecimal HTML
+heart entity, or &hearts;. Tiger matching ignores case. Leading whitespace
+does not change a name's group. Input order inside each group is preserved.
+Server names, native session indices, joining and spectator actions, row
+templates, spacing and styles retain their existing online behaviour.
+
+Only Sessions.onAddSessions differs from the saved pre-LAN script baseline.
+No saved-LAN integration or local bridge credential is included. Other
+functions and all other baseline bytes are preserved.
+
+Offline JavaScript checks cover syntax, the sixteen screenshot-derived rows,
+prefix variants, stable ordering, native session identities, joining,
+spectating, full/unjoinable entries and refresh handling. These checks use
+modeled engine/UI dependencies. In-game display after restart and installation
+on another player's computer remain unconfirmed.
+
 SUPPLIED FILE CHECKSUMS
 
 These identify the full replacement files, not additional installation steps.
@@ -386,3 +436,6 @@ SHA256 141794CD40FFBF06C30D3F05CDAEA2BE05FC6C60384143922B7DBF5DD6B45079
 
 Space/spacegame/Content/Paks/Makichika_VenturerSkins_P.pak
 SHA256 B5DD72B42563C75DA64883903A57F151919C119A86AD90BDC6CA26072DEDB997
+
+Space/spacegame/Content/UIResources/frontend/views/startgame/startgame-script.js
+SHA256 1C62A37D09FC3930AA97E7B798C337E95CE1D24BE4829FA15E62EB23DE7711AF

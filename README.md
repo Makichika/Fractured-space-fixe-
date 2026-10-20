@@ -14,6 +14,7 @@ My servers are now always showing in the server list if my PC is on but without 
 | **Client** | Fix the draft menu not showing other players for the first player joining pre-draft |
 | **Client** | Fix all Venturer skins |
 | **Client** | Fix missile red icons and warning sounds |
+| **Client (optional)** | Group the online server list: heart-prefixed names first, Tiger-prefixed names second, then all other servers |
 
 ### Server fixes
 
