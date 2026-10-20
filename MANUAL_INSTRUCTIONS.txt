@@ -163,6 +163,20 @@ replacement files. Replacing one also replaces other modifications inside it. Th
 are additional files. Other client builds have not been verified.
 Server game modes, timers, team rules and bots are configured separately.
 
+SERVER-SIDE CHANGES ALREADY INSTALLED
+
+The server-side Paladin Purge and effect clock changes described in section 9
+are installed on Makichika's LastStand, Conquest, ConquestOpen, PVE and PVP
+servers. They are separate from the client downloads in the Space folder.
+
+The two changed server files are:
+WindowsServer/spacegame/Binaries/Win64/spacegameServer-Win64-Shipping_makichika.exe
+WindowsServer/ServerManager/windows_host.py
+
+These private dedicated-server files are not included in this repository.
+Installing the client files does not add the server gameplay changes to
+another server. The Protector visual pak is a separate client visual change.
+
 UNINSTALL
 
 Close the game. Restore the original files from your backups.
@@ -535,6 +549,68 @@ and cleanup on manual stop or destruction remain unconfirmed.
 
 Supplied pak size: 12772 bytes.
 SHA256 B9E91E096D327B464FBA32792BF6A0069A189907A1FA3422D725D894167837FC
+
+9. SERVER-SIDE PALADIN PURGE AND EFFECT CLOCK CHANGES
+
+Installed on the five Makichika server profiles; server files are not supplied
+as client downloads. The standard Paladin Purge Torpedo acts on the hit ship.
+
+Allied receiver:
+Remove negative statuses immediately and reject new negative statuses for
+five game seconds. Positive allied statuses remain allowed.
+
+Enemy receiver:
+Remove positive statuses, including Shielded protection, and reject new
+positive statuses for five game seconds. Negative statuses remain allowed.
+Gamma objective reward category 20 is exempt. Gamma Spotted detection is
+separate and remains a negative status. This is status immunity, not immunity
+to ordinary damage. Paladin Plasma Field direct damage is unchanged.
+
+During an enemy Purge window, abilities granting only personal positive
+effects are blocked before normal activation costs. Shared self-and-allies
+abilities remain usable; the purged ship's positive self-benefit is rejected
+while other eligible recipients can still receive their benefits. Protector
+Shielding can therefore continue serving nearby allies while its purged owner
+loses its personal shield. The separate client pak preserves the field visual.
+
+The duration is five seconds for Purge, status rejection, personal ability
+blocking and replicated countdown metadata. The earlier three-second revision
+is retained privately as a reserve and is not the active server setting.
+The duration RPC carries a multiplier adjustment, not an absolute duration.
+
+Named FStatusEffect creation and expiry comparisons, plus the private Purge
+window, now use UWorld game time at offset 0x900 instead of real time at 0x908.
+This follows intentional MATCH SPEED slow motion. The separate timed ShipPawn
+modifier queue and area/direct-damage lifetimes were not converted; this is
+not a claim that every timed game mechanic was changed.
+
+The server announces compatible clocks with the existing reliable
+ClientMessage RPC, empty text, message type Makichika_Status_GameClock_v1
+and lifetime zero. The client executable supplied here uses that capability.
+Clients without the clock update can show a mismatched countdown in slow
+motion while server gameplay remains authoritative.
+
+A post-draft PvP crash in the first clock revision was traced to the new
+capability scan reading World+0x140 as GameState. The installed repair uses
+the existing native GetGameState function at RVA 0x13DD360, whose native code
+reads World+0xF8. Native reflection independently confirms PlayerArray+0x330.
+The old failing revision is historical and must not be restored as a fix.
+
+Current dedicated executable SHA256:
+79BDAA2C2CEA6314E4B86F51C2AF12557578DC2F3F97F6F81435AC456AD29A5C
+Current windows_host.py SHA256:
+B4572750708D8FD49373D25A1FE15022BB8229967860E2CF3EC3235C9D7CAD10
+
+The manager edit only updates the accepted executable hash. The five profile
+configurations, launchers and other manager files were preserved. Existing
+authentication and automatic server management remain in place.
+
+Verification: 198 native x64 assertions at two simulated ASLR bases, including
+a regression that reproduces the old invalid GameState path; 16 native bool
+ownership assertions; PE/preservation/unwind checks and an owned dedicated
+startup against loopback sessions. These checks do not establish exhaustive
+ship/status coverage, all Gamma statistics, actual shield damage reduction
+or every multiplayer and slow-motion sequence.
 
 SUPPLIED FILE CHECKSUMS
 
