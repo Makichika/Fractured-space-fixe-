@@ -15,7 +15,7 @@ My servers are now always showing in the server list if my PC is on but without 
 | **Client** | Fix all Venturer skins |
 | **Client** | Fix missile red icons and warning sounds |
 | **Client (optional)** | Group the online server list |
-| **Client** | Status effect countdowns follow game time on compatible servers |
+| **Client** | Status effect countdowns follow game time instead of real time on compatible servers |
 | **Client** | Keep the Protector shield field visual independent of its personal shield status |
 
 ### Server fixes
