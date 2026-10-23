@@ -33,3 +33,6 @@ My servers are now always showing in the server list if my PC is on but without 
 | **Server** | Allow players to vote on enemy bot difficulty in the PvE server; instructions appear in pre-draft chat |
 | **Server** | Fixe the paladin purge actually be 5s, to not waste a cooldown, the enemy being purged can't activate self effect only (self boost etc) |
 
+🧪 Experimental Servers change 
+
+-Centurion's Overload damage from 3k to 4k.
