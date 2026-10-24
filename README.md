@@ -1,3 +1,7 @@
+### Installation
+
+Read [instructions for emplacement](instructions%20for%20emplacement.txt) for the file locations and installation steps.
+
 **DO NOT COPY THE WHOLE FOLDER. ONLY COPY AND PASTE THE INDIVIDUAL FILES INTO THEIR SPECIFIED LOCATIONS.**
 
 All changes made so far. Client fixes are available on this GitHub; server fixes are installed on my servers.
@@ -36,3 +40,4 @@ My servers are now always showing in the server list if my PC is on but without 
 🧪 Experimental Servers change 
 
 -Centurion's Overload damage from 3k to 4k.
+

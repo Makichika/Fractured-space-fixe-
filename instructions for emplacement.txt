@@ -1,21 +1,39 @@
-INSTALLATION
+INSTRUCTIONS FOR EMPLACEMENT
+Fractured Space client fixes
+Author: Makichika
 
-Close Fractured Space. Back up each file before replacing it.
-Download this repository with Code > Download ZIP, then extract it.
-Do not copy the ZIP or the whole downloaded folder into the game.
-Copy only the individual files to the exact matching destinations below.
+======================================================================
+PART 1 - INSTALLATION
+======================================================================
 
-The included Space folder shows the full path from the game folder.
-Your own Space folder is the one containing spacegame.
-Default Steam game folder:
+STEP 1 - CLOSE THE GAME AND DOWNLOAD THE FILES
+
+1. Close Fractured Space completely.
+2. On GitHub, click Code > Download ZIP.
+3. Extract the ZIP to a folder outside the game.
+4. Back up each existing game file before replacing it.
+
+STEP 2 - FIND YOUR GAME FOLDER
+
+In Steam: right-click Fractured Space > Manage > Browse local files.
+
+The game folder is named Space and contains the spacegame folder.
+The usual location is:
 C:\Program Files (x86)\Steam\steamapps\common\Space
-Use your actual installation folder if it is different.
-Do not create a second Space folder inside your existing Space folder.
+
+Use your actual Steam location if yours is different.
+Every path below starts at this Space folder.
+
+STEP 3 - COPY THE FILES TO THEIR MATCHING LOCATIONS
+
+Copy the individual files listed below into the matching folders in your
+game. Accept replacement only for those matching filenames.
+
+Do not copy the whole downloaded repository into the game.
+Do not create another Space folder inside your existing Space folder.
+No manual editing is needed.
 
 FOLDER STRUCTURE
-
-These are real folders inside one another, including folders that contain only
-the next folder. Each line below is one separate folder or file:
 
 Space/
     spacegame/
@@ -37,159 +55,103 @@ Space/
                         startgame/
                             startgame-script.js
 
-For the draft files, open Space, then spacegame, then Content, then UIResources,
-then frontend, then drafting. Put the three draft files inside drafting.
+A. DRAFT MENU - 3 FILES
 
-On GitHub, UIResources/frontend/drafting may appear as one clickable line
-because each intermediate folder contains only the next folder. This is
-GitHub's compact folder display; the folders are still separate.
-Code > Download ZIP preserves all these separate nested folders.
+Copy these files from the download to the same paths in your game:
+Space\spacegame\Content\UIResources\frontend\drafting\drafting-script.js
+Space\spacegame\Content\UIResources\frontend\drafting\mode-selector.js
+Space\spacegame\Content\UIResources\frontend\drafting\drafting-style.css
 
-For the optional server list file, open Space, then spacegame, then Content,
-then UIResources, then frontend, then views, then startgame. Put
-startgame-script.js inside startgame. These are separate nested folders too.
-
-COPY THESE FILES TO THESE LOCATIONS
-
-1. Draft menu files
-
-Copy these three individual files to the same paths in your game:
-Space/spacegame/Content/UIResources/frontend/drafting/drafting-script.js
-Space/spacegame/Content/UIResources/frontend/drafting/mode-selector.js
-Space/spacegame/Content/UIResources/frontend/drafting/drafting-style.css
-
-Full folder path from Space:
-Space/spacegame/Content/UIResources/frontend/drafting
-
-Default full destination folder:
+Default destination folder:
 C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResources\frontend\drafting
 
-Replace only the matching files. No manual editing is needed.
+These files update the Ready button, mode names, artwork and list scrolling.
 
-2. Client executable: draft player list, missile warnings and effect clocks
+B. GAME EXECUTABLE - 1 FILE
 
-Copy this individual file to the same path in your game:
-Space/spacegame/Binaries/Win64/Fractured Space.exe
+Copy this file from the download to the same path in your game:
+Space\spacegame\Binaries\Win64\Fractured Space.exe
 
-Full folder path from Space:
-Space/spacegame/Binaries/Win64
+Default destination folder:
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Binaries\Win64
 
-Default full destination:
-C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Binaries\Win64\Fractured Space.exe
+Replace the existing Fractured Space.exe. Keep its exact filename.
+This one file includes the draft player list, missile warning and effect
+countdown fixes. Game-time countdowns require a compatible server.
 
-Replace the existing Fractured Space.exe. Keep that exact filename.
+C. ADDITIONAL FIXES - 3 PAK FILES
 
-This single executable includes the drafting player list fix, incoming missile
-icon and alert cleanup, and status effect clock compatibility. Replace only
-this executable to update these native client fixes.
-On a compatible server, effect countdowns follow game time and menu slow motion.
-On other servers, they retain the original timing. Finite HUD counters are
-clamped to zero instead of showing negative values. This client file does not
-install the server's Paladin Purge gameplay rules.
-Close and restart the game; copying the file does not update a running client.
+Copy these files from the download to the same paths in your game:
+Space\spacegame\Content\Paks\Makichika_MapJamming_P.pak
+Space\spacegame\Content\Paks\Makichika_VenturerSkins_P.pak
+Space\spacegame\Content\Paks\Makichika_ProtectorShield_P.pak
 
-3. Map jamming fix
+Default destination folder:
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks
 
-Copy this individual file to the same path in your game:
-Space/spacegame/Content/Paks/Makichika_MapJamming_P.pak
+- Makichika_MapJamming_P.pak: map jamming display fix.
+- Makichika_VenturerSkins_P.pak: Venturer skin fix.
+- Makichika_ProtectorShield_P.pak: Protector shield field visual fix.
 
-Full folder path from Space:
-Space/spacegame/Content/Paks
+Each PAK can be installed separately. Add it alongside the existing PAKs.
+Keep the original BP.pak and the other installed PAK files.
 
-Default full destination:
-C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks\Makichika_MapJamming_P.pak
+D. OPTIONAL SERVER LIST GROUPING - 1 FILE
 
-4. Venturer skin fix
+Copy this file only if you want heart-prefixed servers first, Tiger-prefixed
+servers second, and the remaining servers last:
+Space\spacegame\Content\UIResources\frontend\views\startgame\startgame-script.js
 
-Copy this individual file to the same path in your game:
-Space/spacegame/Content/Paks/Makichika_VenturerSkins_P.pak
+Default destination folder:
+C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResources\frontend\views\startgame
 
-Full folder path from Space:
-Space/spacegame/Content/Paks
+Replace the matching startgame-script.js after backing it up.
+The received order is kept within each group. No blank rows are added.
+This optional file can be installed on its own.
 
-Default full destination:
-C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks\Makichika_VenturerSkins_P.pak
+STEP 4 - RESTART THE GAME
 
-This fix only needs this one additional pak file on each player's computer.
-It can be installed on its own. No server change or executable replacement
-is required for the Venturer skin fix. Keep the other installed fixes.
+Start Fractured Space with your usual launcher.
+A complete game exit and relaunch is needed to load new PAK files.
+Changing server or map is not enough.
 
-5. Online server list grouping (optional)
+Each player installs the client files on their own computer.
+Server gameplay rules, timers, teams and bots are configured separately.
 
-Copy this individual file to the same path in your game:
-Space/spacegame/Content/UIResources/frontend/views/startgame/startgame-script.js
+IF YOU ALREADY USE OTHER CLIENT MODIFICATIONS
 
-Full folder path from Space:
-Space/spacegame/Content/UIResources/frontend/views/startgame
+The executable and JavaScript/CSS files are complete replacement files.
+Replacing them also replaces any custom changes inside those same files.
+This matters especially if your startgame-script.js has custom LAN features.
+Keep your backups. Other client builds have not been verified.
 
-Default full destination:
-C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResources\frontend\views\startgame\startgame-script.js
+HOW TO UNINSTALL
 
-Replace only the matching startgame-script.js after backing it up.
-This optional client file groups online servers in this order:
-heart-prefixed names first, Tiger-prefixed names second, all other servers last.
-It keeps the received order within each group. It adds no blank rows or headers.
-It can be installed on its own; no server change or executable replacement
-is needed for this optional feature. Each player chooses whether to install it.
-This is the standard online server browser with only the display-order change.
-It contains no saved-LAN integration or local bridge key. Replacing this file
-also replaces any existing customisations inside it; keep your backup.
+1. Close the game completely.
+2. Restore any replaced files from your backups.
+3. To remove an added PAK fix, remove only its matching Makichika PAK file.
+   If you replaced an older version of that PAK, restore your backup instead.
+4. Restart the game.
 
-6. Protector shield field visual
+Restore startgame-script.js to undo the optional server grouping; do not
+delete the game script. Keep BP.pak.
 
-Copy this individual file to the same path in your game:
-Space/spacegame/Content/Paks/Makichika_ProtectorShield_P.pak
+ABOUT THE FOLDERS ON GITHUB
 
-Full folder path from Space:
-Space/spacegame/Content/Paks
+GitHub may show UIResources/frontend/drafting on one clickable line.
+They are separate folders inside one another. Download ZIP keeps them so.
 
-Default full destination:
-C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks\Makichika_ProtectorShield_P.pak
+======================================================================
+INSTALLATION COMPLETE - YOU CAN STOP READING HERE
+======================================================================
 
-Keep the original BP.pak and the other installed pak fixes.
-This additional client pak keeps the Protector's shared shield field visual
-separate from its personal Shield Self status. Purging the Protector should
-remove its personal protection while the active field remains visible for
-nearby allies. This visual pak does not change shield strength or Purge rules.
-Every player who wants the corrected visual needs this file on their computer.
-A complete client exit and relaunch is required after installation; changing
-server or map does not load a newly copied pak.
+Everything below is optional reference material.
+The changes are already included in the downloads.
+Do not repeat the code or executable edits shown below.
 
-Restart the game using your usual launcher.
-Each player who needs these client fixes installs them on their own computer.
-
-The draft menu files, optional startgame-script.js and executable are complete
-replacement files. Replacing one also replaces other modifications inside it. The three pak fixes
-are additional files. Other client builds have not been verified.
-Server game modes, timers, team rules and bots are configured separately.
-
-SERVER-SIDE CHANGES ALREADY INSTALLED
-
-The server-side Paladin Purge and effect clock changes described in section 9
-are installed on Makichika's LastStand, Conquest, ConquestOpen, PVE and PVP
-servers. They are separate from the client downloads in the Space folder.
-
-The two changed server files are:
-WindowsServer/spacegame/Binaries/Win64/spacegameServer-Win64-Shipping_makichika.exe
-WindowsServer/ServerManager/windows_host.py
-
-These private dedicated-server files are not included in this repository.
-Installing the client files does not add the server gameplay changes to
-another server. The Protector visual pak is a separate client visual change.
-
-UNINSTALL
-
-Close the game. Restore the original files from your backups.
-To undo only the optional server grouping, restore your backed-up
-startgame-script.js to its matching destination. Do not delete the game script.
-If Makichika_MapJamming_P.pak was newly added, remove that file to undo its fix.
-To undo the Venturer skin fix, remove only Makichika_VenturerSkins_P.pak,
-or rename it to Makichika_VenturerSkins_P.pak.disabled. Keep the original BP.pak.
-To undo the Protector visual fix, remove only Makichika_ProtectorShield_P.pak,
-or rename it to Makichika_ProtectorShield_P.pak.disabled. Restart the client.
-
-
-EXACT CHANGES INCLUDED IN THE FILES
+======================================================================
+PART 2 - EXACT CLIENT CHANGES (OPTIONAL TECHNICAL REFERENCE)
+======================================================================
 
 Author: Makichika
 
@@ -208,32 +170,32 @@ for the internal horde mode. Other artwork paths use lower-case mode names. Exis
 drafting-style.css gives the mode list automatic 112px rows, 24px row gaps,
 vertical scrolling, no horizontal scrolling, and 2px 8px padding.
 
-The exact before/after changes for these three files are listed below.
+The before/after examples below describe the supplied files. No manual edits are needed.
 
 1. READY BUTTON
 
-Open:
+File (reference only):
 C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResources\frontend\drafting\drafting-script.js
 
-Find the condition inside function setDraftingState(state).
+Changed condition inside function setDraftingState(state):
 
-FIND:
+BEFORE:
 if (state == DRAFTING_STAGES.WaitingforUsers || state == DRAFTING_STAGES.BalancingTeams) {
 
-REPLACE WITH:
+AFTER:
 if (state == DRAFTING_STAGES.BalancingTeams) {
 
 2. MODE NAMES AND ARTWORK
 
-Open:
+File (reference only):
 C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResources\frontend\drafting\mode-selector.js
 
 A. Mode constants
 
-FIND:
+BEFORE:
     CONQUEST: 'conquest',
 
-REPLACE WITH:
+AFTER:
     CONQUEST: 'conquest',
     CONQUEST3V3: 'conquest3v3',
     FRONTLINE: 'frontline',
@@ -241,20 +203,20 @@ REPLACE WITH:
 
 B. Mode name matching
 
-FIND:
+BEFORE:
       switch(mode.Name) {
 
-REPLACE WITH:
+AFTER:
       switch(mode.Name.toLowerCase()) {
 
 C. Mode labels
 
-FIND:
+BEFORE:
         case MODES.CONQUEST:
           l10n = utils.l10n.get('GameModeConquestLabel');
           break;
 
-REPLACE WITH:
+AFTER:
         case MODES.CONQUEST:
           l10n = utils.l10n.get('GameModeConquestLabel');
           break;
@@ -270,10 +232,10 @@ REPLACE WITH:
 
 D. Artwork selection
 
-FIND:
+BEFORE:
 ModeSelector.prototype.TEMPLATE_MODE = function templateBuilder(name, id, l10n, rewardBonusObj) {
 
-REPLACE WITH:
+AFTER:
 ModeSelector.prototype.TEMPLATE_MODE = function templateBuilder(name, id, l10n, rewardBonusObj) {
     let modeName = name.toLowerCase();
     let imagePath = modeName === MODES.FRONTLINE
@@ -284,21 +246,21 @@ ModeSelector.prototype.TEMPLATE_MODE = function templateBuilder(name, id, l10n, 
 
 E. Artwork image
 
-FIND:
+BEFORE:
 background-image: url(./drafting/modes/${name}.png);
 
-REPLACE WITH:
+AFTER:
 background-image: url(${imagePath});
 
 3. MODE LIST
 
-Open:
+File (reference only):
 C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResources\frontend\drafting\drafting-style.css
 
-FIND:
+BEFORE:
 .selector .selector-mode ul li {position: relative;height: 100%;}
 
-REPLACE WITH:
+AFTER:
 .selector .selector-mode ul li {position: relative;height: 100%;}
 
 .selector .selector-mode ul {
@@ -550,7 +512,25 @@ and cleanup on manual stop or destruction remain unconfirmed.
 Supplied pak size: 12772 bytes.
 SHA256 B9E91E096D327B464FBA32792BF6A0069A189907A1FA3422D725D894167837FC
 
-9. SERVER-SIDE PALADIN PURGE AND EFFECT CLOCK CHANGES
+======================================================================
+PART 3 - SERVER CHANGES (REFERENCE ONLY)
+======================================================================
+
+These server changes are separate from the client downloads.
+You do not need to install any server files to play.
+
+The Paladin Purge and effect clock changes below are installed on Makichika's
+LastStand, Conquest, ConquestOpen, PVE and PVP servers.
+The private files for this server revision are:
+WindowsServer\spacegame\Binaries\Win64\spacegameServer-Win64-Shipping_makichika.exe
+WindowsServer\ServerManager\windows_host.py
+
+They are not supplied in this repository. Copying the client files does not
+install these gameplay rules on another server.
+The Protector PAK in Part 1 changes the client visual separately.
+The technical record below describes the documented server revision.
+
+PALADIN PURGE AND EFFECT CLOCKS
 
 Installed on the five Makichika server profiles; server files are not supplied
 as client downloads. The standard Paladin Purge Torpedo acts on the hit ship.
@@ -596,12 +576,12 @@ the existing native GetGameState function at RVA 0x13DD360, whose native code
 reads World+0xF8. Native reflection independently confirms PlayerArray+0x330.
 The old failing revision is historical and must not be restored as a fix.
 
-Current dedicated executable SHA256:
+Dedicated executable SHA256 recorded for this server revision:
 79BDAA2C2CEA6314E4B86F51C2AF12557578DC2F3F97F6F81435AC456AD29A5C
-Current windows_host.py SHA256:
+windows_host.py SHA256 recorded for this server revision:
 B4572750708D8FD49373D25A1FE15022BB8229967860E2CF3EC3235C9D7CAD10
 
-The manager edit only updates the accepted executable hash. The five profile
+For this server revision, the manager edit only updated the accepted executable hash. The five profile
 configurations, launchers and other manager files were preserved. Existing
 authentication and automatic server management remain in place.
 
@@ -612,9 +592,12 @@ startup against loopback sessions. These checks do not establish exhaustive
 ship/status coverage, all Gamma statistics, actual shield damage reduction
 or every multiplayer and slow-motion sequence.
 
-SUPPLIED FILE CHECKSUMS
+======================================================================
+PART 4 - FILE CHECKSUMS (OPTIONAL)
+======================================================================
 
-These identify the full replacement files, not additional installation steps.
+These SHA256 values identify the supplied files.
+Checking them is optional and does not install or change anything.
 
 Space/spacegame/Binaries/Win64/Fractured Space.exe
 SHA256 C9D56D3E41462378A48A9D7F9FA57B952A3C945CC1AF236CFF90C754F0D2C6E8
