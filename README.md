@@ -33,7 +33,7 @@ My servers are now always showing in the server list if my PC is on but without 
 | **Server** | Fill teams with bots, adapt filling to 3v3 or 5v5, and give a bonus Venturer to the team with fewer human players |
 | **Server** | Enable global pre-draft chat |
 | **Server** | Force late arrivals to spectate on the locked Conquest server only |
-| **Server** | Set pre-draft to a maximum of 1200 seconds; players can write "ready" to start drafting earlier |
+| **Server** | No  time duration on Pre-draft; players need to write "ready" to start drafting |
 | **Server** | Allow players to vote on enemy bot difficulty in the PvE server; instructions appear in pre-draft chat |
 | **Server** | Fixe the paladin purge actually be 5s, to not waste a cooldown, the enemy being purged can't activate self effect only (self boost etc) |
 
