@@ -12,6 +12,17 @@ for Last stand micro freeze do Windows+R and type %LOCALAPPDATA%\spacegame\Saved
 then every number you see add a 0 to it going from 10k to 100k
 in some case it's not at 10k just go write 100000 are above if you want
 
+if you don't have them all together just put 
+[/Script/Engine.Player]
+ConfiguredInternetSpeed=100000
+ConfiguredLanSpeed=100000
+
+[/Script/OnlineSubsystemUtils.IpNetDriver]
+MaxClientRate=100000
+MaxInternetClientRate=100000
+
+at the end of the file
+
 ### Client fixes
 
 | Type | Change |
