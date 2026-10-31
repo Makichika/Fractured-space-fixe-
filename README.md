@@ -10,6 +10,7 @@ My servers are now always showing in the server list if my PC is on but without 
 
 for Last stand micro freeze do Windows+R and type %LOCALAPPDATA%\spacegame\Saved\Config\WindowsNoEditor\Engine.ini 
 then every number you see add a 0 to it going from 10k to 100k
+in some case it's not at 10k just go write 100000 are above if you want
 
 ### Client fixes
 
