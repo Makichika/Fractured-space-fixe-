@@ -15,7 +15,7 @@ For Last Stand micro freezes, press Windows + R.
 Open this file:
 `%LOCALAPPDATA%\spacegame\Saved\Config\WindowsNoEditor\Engine.ini`
 
-Add these lines at the end of the file:
+Edit to have 100k or more or add these lines at the end of the file if you don't have them:
 
 ```ini
 [/Script/Engine.Player]
