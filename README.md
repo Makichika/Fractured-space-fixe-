@@ -8,6 +8,9 @@ All changes made so far. Client fixes are available on this GitHub; server fixes
 
 My servers are now always showing in the server list if my PC is on but without using any ressource until someone join.
 
+for Last stand micro freeze do Windows+R and type %LOCALAPPDATA%\spacegame\Saved\Config\WindowsNoEditor\Engine.ini 
+then every number you see add a 0 to it going from 10k to 100k
+
 ### Client fixes
 
 | Type | Change |
