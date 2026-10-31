@@ -8,11 +8,16 @@ All changes made so far. Client fixes are available on this GitHub; server fixes
 
 My servers are now always showing in the server list if my PC is on but without using any ressource until someone join.
 
-for Last stand micro freeze do Windows+R and type %LOCALAPPDATA%\spacegame\Saved\Config\WindowsNoEditor\Engine.ini 
-then every number you see add a 0 to it going from 10k to 100k
-in some case it's not at 10k just go write 100000 are above if you want
+### Fix micro freezes
 
-if you don't have them all together just put 
+For Last Stand micro freezes, press Windows + R.
+
+Open this file:
+`%LOCALAPPDATA%\spacegame\Saved\Config\WindowsNoEditor\Engine.ini`
+
+Add these lines at the end of the file:
+
+```ini
 [/Script/Engine.Player]
 ConfiguredInternetSpeed=100000
 ConfiguredLanSpeed=100000
@@ -20,6 +25,9 @@ ConfiguredLanSpeed=100000
 [/Script/OnlineSubsystemUtils.IpNetDriver]
 MaxClientRate=100000
 MaxInternetClientRate=100000
+```
+
+### Client fixes
 
 at the end of the file
 
