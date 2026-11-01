@@ -556,10 +556,17 @@ the existing audio system. The introduction waits for the local ship, HUD
 and audio controller; an early combat request is retained until entry.
 No historical executable, audio bank or decoder key is included.
 
+The resource award now triggers the existing ally/enemy Charon banner and
+displays the actual amount granted by the server. The original bounty tiers
+are unchanged. This requires the matching updated event map on the server
+and a full client restart; no shared HUD or audio bank is replaced.
+
 Native dedicated-lab checks passed package loading, boss spawn, portal
 unlock, sector jump and return, targeting, real damage, death, bounty and
-garbage collection. The latest voice sequencing has not yet been confirmed
-by listening in a rendered client. Package checks do not prove audibility.
+garbage collection. A real first-tier award sends team 1 and 2000 resources;
+widget/text/animation contracts and dedicated-server guards also pass.
+The latest voice sequencing and visible reward banner still need testing
+in a rendered client. Package checks do not prove audibility or rendering.
 
 10. MAKICHIKA_XMASEVENT_P.PAK
 
@@ -697,7 +704,7 @@ Space/spacegame/Content/Paks/Makichika_ProtectorShield_P.pak
 SHA256 527EE940E636DAB6FBEB53099BA6008CEDB36FDE3B0A46F89826CDDA2B3EB8E1
 
 Space/spacegame/Content/Paks/Makichika_CharonEvent_P.pak
-SHA256 0175B3FA409BE04B61DD4F5D90609473717AD8E1BFC85BCC1C7DC054C8DA2585
+SHA256 8718ACFD43663CD9613A5C2993E2596B23F081B57490DB1BEEFE9826D491FDE2
 
 Space/spacegame/Content/Paks/Makichika_XmasEvent_P.pak
 SHA256 C20482888A928D878548DA0EF51073ABCDB7EF6BF9E3C51CFDB793BF5A419A48

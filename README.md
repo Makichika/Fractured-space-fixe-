@@ -44,7 +44,7 @@ at the end of the file
 | **Client (optional)** | Group the online server list |
 | **Client** | Status effect countdowns follow game time instead of real time on compatible servers |
 | **Client** | Keep the Protector shield field visual independent of its personal shield status; fix its asynchronous effect-loading dependency |
-| **Client + compatible server** | Restore the Charon event maps, hidden sector and voice hooks (`conquestcharon`) |
+| **Client + compatible server** | Restore the Charon event maps, hidden sector, voice hooks and team resource notification (`conquestcharon`) |
 | **Client + compatible server** | Restore the Christmas event maps, Omega HUD and Ru-T0lf combat voice hooks (`conquestxmas`) |
 
 The event PAKs require a server configured for the corresponding event and the updated draft menu scripts. They do not enable events on every Conquest server. See the installation instructions for requirements and verification limits.
