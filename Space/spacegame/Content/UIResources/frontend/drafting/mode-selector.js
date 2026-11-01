@@ -2,6 +2,8 @@ var ModeSelector = (function ModeSelector() {
 
   const MODES = {
     CONQUEST: 'conquest',
+    CONQUEST_CHARON: 'conquestcharon',
+    CONQUEST_XMAS: 'conquestxmas',
     CONQUEST3V3: 'conquest3v3',
     FRONTLINE: 'frontline',
     HORDE: 'horde',
@@ -9,7 +11,8 @@ var ModeSelector = (function ModeSelector() {
     RIFT: 'rift',
     PAYLOAD: 'payload',
     ARKAIN: 'arkain',
-    INFECTION: 'infection'
+    INFECTION: 'infection',
+    EYE_ASSAULT: 'eyeassault'
   };
 
   function ModeSelector(options) {
@@ -50,6 +53,15 @@ var ModeSelector = (function ModeSelector() {
       let l10n = '';
 
       switch(mode.Name.toLowerCase()) {
+        case MODES.EYE_ASSAULT:
+          l10n = 'Eye Assault';
+          break;
+        case MODES.CONQUEST_XMAS:
+          l10n = 'conquestxmas';
+          break;
+        case MODES.CONQUEST_CHARON:
+          l10n = 'conquestcharon';
+          break;
         case MODES.CONQUEST:
           l10n = utils.l10n.get('GameModeConquestLabel');
           break;
@@ -95,17 +107,17 @@ var ModeSelector = (function ModeSelector() {
 
   ModeSelector.prototype.TEMPLATE_MODE = function templateBuilder(name, id, l10n, rewardBonusObj) {
     let modeName = name.toLowerCase();
-    let imagePath = modeName === MODES.FRONTLINE
+    let imagePath = modeName === MODES.EYE_ASSAULT ? null : modeName === MODES.FRONTLINE
       ? './views/gamemodes/images/medium/solo-frontline.png'
       : modeName === MODES.HORDE
         ? './views/gamemodes/images/medium/last-stand.png'
-        : './drafting/modes/' + (modeName === MODES.CONQUEST3V3 ? MODES.CONQUEST : modeName) + '.png';
+        : './drafting/modes/' + ((modeName === MODES.CONQUEST3V3 || modeName === MODES.CONQUEST_CHARON || modeName === MODES.CONQUEST_XMAS) ? MODES.CONQUEST : modeName) + '.png';
     return `<li class="mode" data-id="${id}">
               <div class="mode-bonus-reward" data-bonus-active="${rewardBonusObj.active}" data-bonus-type="${rewardBonusObj.type}" data-tooltip="${rewardBonusObj.tooltip}" data-tooltip-align="above center">
                 <span>x${rewardBonusObj.bonus}</span>
                 <div class="mode-bonus-bdr"></div>
               </div>
-              <div class="mode-description" style="background-image: url(${imagePath});">
+              <div class="mode-description" style="background-image: ${imagePath ? `url(${imagePath})` : 'none'};">
                 <div class="mode-name">
                   <label>${l10n}</label>
                   <div class="votes">

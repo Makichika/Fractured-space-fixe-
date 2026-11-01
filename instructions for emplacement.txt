@@ -45,6 +45,8 @@ Space/
                 Makichika_MapJamming_P.pak
                 Makichika_VenturerSkins_P.pak
                 Makichika_ProtectorShield_P.pak
+                Makichika_CharonEvent_P.pak
+                Makichika_XmasEvent_P.pak
             UIResources/
                 frontend/
                     drafting/
@@ -66,6 +68,7 @@ Default destination folder:
 C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\UIResources\frontend\drafting
 
 These files update the Ready button, mode names, artwork and list scrolling.
+They also display conquestcharon and conquestxmas with Conquest artwork.
 
 B. GAME EXECUTABLE - 1 FILE
 
@@ -79,12 +82,14 @@ Replace the existing Fractured Space.exe. Keep its exact filename.
 This one file includes the draft player list, missile warning and effect
 countdown fixes. Game-time countdowns require a compatible server.
 
-C. ADDITIONAL FIXES - 3 PAK FILES
+C. ADDITIONAL FIXES AND EVENTS - 5 PAK FILES
 
 Copy these files from the download to the same paths in your game:
 Space\spacegame\Content\Paks\Makichika_MapJamming_P.pak
 Space\spacegame\Content\Paks\Makichika_VenturerSkins_P.pak
 Space\spacegame\Content\Paks\Makichika_ProtectorShield_P.pak
+Space\spacegame\Content\Paks\Makichika_CharonEvent_P.pak
+Space\spacegame\Content\Paks\Makichika_XmasEvent_P.pak
 
 Default destination folder:
 C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks
@@ -92,9 +97,26 @@ C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Content\Paks
 - Makichika_MapJamming_P.pak: map jamming display fix.
 - Makichika_VenturerSkins_P.pak: Venturer skin fix.
 - Makichika_ProtectorShield_P.pak: Protector shield field visual fix.
+- Makichika_CharonEvent_P.pak: restored Charon event client maps and logic.
+- Makichika_XmasEvent_P.pak: restored Christmas event client maps and HUD.
 
 Each PAK can be installed separately. Add it alongside the existing PAKs.
 Keep the original BP.pak and the other installed PAK files.
+
+CHARON AND CHRISTMAS EVENTS
+
+For these events, also install both updated draft menu scripts from section A:
+drafting-script.js and mode-selector.js. Keep drafting-style.css installed
+to retain the existing scrolling and layout fix.
+
+A compatible server must offer conquestcharon or conquestxmas. Select the
+corresponding mode when the server offers the draft mode vote. The client
+files do not activate events on an ordinary Conquest server. Their gameplay
+and server configuration are separate and are not supplied in this download.
+
+The events reuse the game's installed audio banks. Do not replace those banks
+with historical versions. Fully close and restart the client through your
+usual bootstrapper after installing or updating the event PAKs.
 
 D. OPTIONAL SERVER LIST GROUPING - 1 FILE
 
@@ -512,6 +534,50 @@ and cleanup on manual stop or destruction remain unconfirmed.
 Supplied pak size: 12772 bytes.
 SHA256 B9E91E096D327B464FBA32792BF6A0069A189907A1FA3422D725D894167837FC
 
+9. MAKICHIKA_CHARONEVENT_P.PAK
+
+Adds eleven private packages (22 files inside the PAK) for the restored
+Halloween/Charon map, hidden sector and compatible event logic. Original
+game packages are not overwritten by these private additions. The restored
+scripts include the jump arrival collision and legacy serialization fixes.
+
+Introduction, sector-entry and combat voice requests are sequenced through
+the existing audio system. The introduction waits for the local ship, HUD
+and audio controller; an early combat request is retained until entry.
+No historical executable, audio bank or decoder key is included.
+
+Native dedicated-lab checks passed package loading, boss spawn, portal
+unlock, sector jump and return, targeting, real damage, death, bounty and
+garbage collection. The latest voice sequencing has not yet been confirmed
+by listening in a rendered client. Package checks do not prove audibility.
+
+10. MAKICHIKA_XMASEVENT_P.PAK
+
+Adds eleven private packages (22 files inside the PAK) for the Christmas
+Conquest map, Omega scenery/staging and restored event controller. The
+controller preserves the earlier Christmas HUD overlap correction.
+
+On a compatible Christmas server, Ru-T0lf's first valid combat targeting
+queues one of the three existing taunts per boss appearance. The existing
+random voice loop keeps the introductory CharacterSelection line and
+serializes the pending taunt. Client state resets for the next encounter.
+These are new combat hooks using existing voice media, not new audio files.
+
+Two successive boss/pusher cycles passed the native dedicated-lab checks,
+including targeting, both-team rewards, allied movement and garbage
+collection. The latest taunt playback still needs listening in a rendered
+client. These client packages do not install a server or change other modes.
+
+DRAFT SCRIPT COMPATIBILITY FOR THE EVENT UPDATE
+
+Both supplied JavaScript files preserve every earlier repository fix and
+also retain the current Eye Assault menu entries and ship-selection guard.
+That menu integration does not include the separate Eye Assault gameplay
+package. Normal mode rendering and ordinary ship selection were regression
+checked without requiring Eye Assault helper functions for ordinary ships.
+Executable, CSS, server-list script and the three earlier fix PAKs are
+unchanged by this event update.
+
 ======================================================================
 PART 3 - SERVER CHANGES (REFERENCE ONLY)
 ======================================================================
@@ -603,10 +669,10 @@ Space/spacegame/Binaries/Win64/Fractured Space.exe
 SHA256 C9D56D3E41462378A48A9D7F9FA57B952A3C945CC1AF236CFF90C754F0D2C6E8
 
 Space/spacegame/Content/UIResources/frontend/drafting/drafting-script.js
-SHA256 974D60215C7D17102B50B2D232C54C712279A6E2FA2120F1C9089F446B9A2F27
+SHA256 F0123B19191D9208581FD8A77DCD9C440AF1D8F3CFF1B6811DCE16AAFA5CFDB1
 
 Space/spacegame/Content/UIResources/frontend/drafting/mode-selector.js
-SHA256 3970F112DC73780901AE7C137718F492C6CAA212EBB8AD39C909CC03E078FFCD
+SHA256 9B83C60984B50C2CE82FD6690E808B10ACC9332DF076000781CC994B97D07BE7
 
 Space/spacegame/Content/UIResources/frontend/drafting/drafting-style.css
 SHA256 141794CD40FFBF06C30D3F05CDAEA2BE05FC6C60384143922B7DBF5DD6B45079
@@ -619,3 +685,9 @@ SHA256 1C62A37D09FC3930AA97E7B798C337E95CE1D24BE4829FA15E62EB23DE7711AF
 
 Space/spacegame/Content/Paks/Makichika_ProtectorShield_P.pak
 SHA256 B9E91E096D327B464FBA32792BF6A0069A189907A1FA3422D725D894167837FC
+
+Space/spacegame/Content/Paks/Makichika_CharonEvent_P.pak
+SHA256 0175B3FA409BE04B61DD4F5D90609473717AD8E1BFC85BCC1C7DC054C8DA2585
+
+Space/spacegame/Content/Paks/Makichika_XmasEvent_P.pak
+SHA256 C20482888A928D878548DA0EF51073ABCDB7EF6BF9E3C51CFDB793BF5A419A48

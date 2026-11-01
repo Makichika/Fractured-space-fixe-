@@ -431,6 +431,17 @@ function setDraftingGameModeName(gameMode) {
   window.gameMode = gameMode;
 
   switch(gameMode) {
+    case 'conquestcharon':
+    case 'conquestxmas':
+      var eventName = gameMode;
+      setHeaderGameModeName(eventName, true);
+      shipOverview.SetGameModeName(eventName);
+      AudioPlayer.playVO(AudioPlayer.DraftingConquestGameMode);
+      return;
+    case 'eyeassault':
+      setHeaderGameModeName('Eye Assault', true);
+      shipOverview.SetGameModeName('Eye Assault');
+      return;
     case Config.GAME_MODE_IDS.CONQUEST:
     case Config.GAME_MODE_IDS.CONQUEST3v3:
       setHeaderGameModeName(gameMode);
@@ -695,6 +706,8 @@ function onBanShipSelectedConfirmation(shipId) {
 
 // ship Selection
 function onPlayerShipSelected(shipId, shipOwned) {
+  var selectedShip = DataStore.getShip(shipId);
+  if (selectedShip && selectedShip.eyeAssaultOnly && !DataStore.isEyeAssaultDraft()) return;
   engine.call("OnDraftingShipSelected", shipId, shipOwned);
 }
 
