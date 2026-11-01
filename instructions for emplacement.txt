@@ -531,8 +531,18 @@ was traced to a client started before pak installation. Full client restart
 is required. Exhaustive standard/Legendary rendering, damage-reduction tests
 and cleanup on manual stop or destruction remain unconfirmed.
 
-Supplied pak size: 12772 bytes.
-SHA256 B9E91E096D327B464FBA32792BF6A0069A189907A1FA3422D725D894167837FC
+Loading dependency correction (1 November 2026): the earlier visual fix added
+MuzzleEffect to the default weapon object but omitted its creation dependency.
+A real client log confirmed an AsyncLoading.cpp:3006 Missing Dependency crash
+for BP_VFX_MuzzleFlash_CorvetteShield_C. The correction adds that one creation-
+before-serialization dependency to export 4. All nineteen serialized export
+payloads, including the previous visual fix and all gameplay values, remain
+byte-identical to the preceding mod package. Cold asynchronous class loading
+and garbage collection pass in the native isolated lab; a real client retest
+of the previously intermittent crash remains required. No server change.
+
+Supplied pak size: 12776 bytes.
+SHA256 527EE940E636DAB6FBEB53099BA6008CEDB36FDE3B0A46F89826CDDA2B3EB8E1
 
 9. MAKICHIKA_CHARONEVENT_P.PAK
 
@@ -684,7 +694,7 @@ Space/spacegame/Content/UIResources/frontend/views/startgame/startgame-script.js
 SHA256 1C62A37D09FC3930AA97E7B798C337E95CE1D24BE4829FA15E62EB23DE7711AF
 
 Space/spacegame/Content/Paks/Makichika_ProtectorShield_P.pak
-SHA256 B9E91E096D327B464FBA32792BF6A0069A189907A1FA3422D725D894167837FC
+SHA256 527EE940E636DAB6FBEB53099BA6008CEDB36FDE3B0A46F89826CDDA2B3EB8E1
 
 Space/spacegame/Content/Paks/Makichika_CharonEvent_P.pak
 SHA256 0175B3FA409BE04B61DD4F5D90609473717AD8E1BFC85BCC1C7DC054C8DA2585
