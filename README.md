@@ -73,3 +73,5 @@ The event PAKs require a server configured for the corresponding event and the u
 -Target being harpooned or displaced now can't use jump drive for the duration.
 
 -AI can now target miner if nobody is around.
+
+-AI now ignore Mine once both team are at max lvl and stop shooting miner once the team is at max lvl.
