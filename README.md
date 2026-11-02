@@ -67,4 +67,4 @@ The event PAKs require a server configured for the corresponding event and the u
 🧪 Experimental Servers change 
 
 -Centurion's Overload damage from 3k to 4k.
-
+-missile, buoy, miner are now immune to ship destruction damage
