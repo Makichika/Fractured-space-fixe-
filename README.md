@@ -68,4 +68,6 @@ The event PAKs require a server configured for the corresponding event and the u
 
 -Centurion's Overload damage from 3k to 4k.
 
--missile, buoy, miner are now immune to ship destruction damage
+-Missile, buoy, miner are now immune to ship destruction damage.
+
+-Target being harpooned or displaced now can't use jump drive for the duration.
