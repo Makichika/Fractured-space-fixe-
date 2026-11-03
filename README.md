@@ -75,3 +75,7 @@ The event PAKs require a server configured for the corresponding event and the u
 -AI can now target miner if nobody is around.
 
 -AI now ignore Mine once both team are at max lvl and stop shooting miner once the team is at max lvl.
+
+-AI now keep shooting you when you jump, no more cheesing them.
+
+-AI now prioritize the jump point in the middle of the base instead of the one far away so they can actually defend the capture zone.
