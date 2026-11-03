@@ -29,10 +29,6 @@ MaxInternetClientRate=100000
 
 ### Client fixes
 
-at the end of the file
-
-### Client fixes
-
 | Type | Change |
 |---|---|
 | **Client** | Fix Destroyer and Interceptor jamming |
