@@ -33,7 +33,7 @@ Do not copy the whole downloaded repository into the game.
 Do not create another Space folder inside your existing Space folder.
 No manual editing is needed.
 
-FOLDER STRUCTURE
+!!!! FOLDER STRUCTURE PUT THE FILE ONLY AND EXACTLY IN THOSE PLACE ON YOUR GAME FILE !!!!
 
 Space/
     spacegame/
