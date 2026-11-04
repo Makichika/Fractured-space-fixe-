@@ -1,4 +1,4 @@
-### Installation
+### Installation CLICK ON CODE AND DOWNLOAD ZIP ON TOP RIGHT OF THIS PAGE, don't forget to unlock the file in properties
 
 Read [instructions for emplacement](instructions%20for%20emplacement.txt) for the file locations and installation steps.
 
