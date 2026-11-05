@@ -1,0 +1,3 @@
+# Runtime payload hashes require identical bytes on every platform.
+Space/** -text
+Bootstrapper/** -text
