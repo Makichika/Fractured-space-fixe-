@@ -28,7 +28,7 @@ MaxClientRate=100000
 MaxInternetClientRate=100000
 ```
 
-### Client fixes
+### Client fixes and Change
 
 | Type | Change |
 |---|---|
