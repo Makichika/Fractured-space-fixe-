@@ -5,7 +5,7 @@ Read [instructions for emplacement](instructions%20for%20emplacement.txt) for th
 
 **DO NOT COPY THE WHOLE FOLDER. ONLY COPY AND PASTE THE INDIVIDUAL FILES INTO THEIR SPECIFIED LOCATIONS.**
 
-For Discord avatars, also install the files from `Bootstrapper` into your own Bootstrapper installation folder. The path in the instructions is only an example: **use your actual Bootstrapper folder if its location is different**. Close the game and Bootstrapper before copying, then launch through the Bootstrapper and keep it open.
+For Discord avatars, also install the files from `Bootstrapper` into your own Bootstrapper installation folder. The path in the instructions is only an example: **use your actual Bootstrapper folder if its location is different**. Close the game and Bootstrapper before copying.
 
 All changes made so far. Client fixes are available on this GitHub; server fixes are installed on my servers.
 
@@ -47,7 +47,6 @@ MaxInternetClientRate=100000
 | **Client + compatible server** | Restore the Charon event maps, hidden sector, voice hooks and team resource notification (`conquestcharon`) |
 | **Client + compatible server** | Restore the Christmas event maps, Omega HUD and Ru-T0lf combat voice hooks (`conquestxmas`) |
 
-Discord avatars use the existing Lifeline account service and public active-player list. Each computer displaying them needs this client/Bootstrapper update; the players being displayed do not need it. It is not tied to a specific server, but players must be listed by Lifeline. This standard avatar fix does not include or require Eye Assault. No gameplay-server update or manually entered player ID is needed. See section E of the installation instructions for the complete file list and compatibility limits.
 
 ### Server fixes and Global change
 
