@@ -8,10 +8,11 @@ PART 1 - INSTALLATION
 
 STEP 1 - CLOSE THE GAME AND DOWNLOAD THE FILES
 
-1. Close Fractured Space completely.
+1. Close Fractured Space completely. For the Discord avatar files, also close
+   the Bootstrapper completely.
 2. On GitHub, click Code > Download ZIP.
 3. Extract the ZIP to a folder outside the game.
-4. Back up each existing game file before replacing it.
+4. Back up each existing game or Bootstrapper file before replacing it.
 
 STEP 2 - FIND YOUR GAME FOLDER
 
@@ -22,7 +23,9 @@ The usual location is:
 C:\Program Files (x86)\Steam\steamapps\common\Space
 
 Use your actual Steam location if yours is different.
-Every path below starts at this Space folder.
+Every path under Space below starts at this Space folder.
+The separate Bootstrapper files go to your Bootstrapper installation folder;
+see section E. Do not put them in the game folder.
 
 STEP 3 - COPY THE FILES TO THEIR MATCHING LOCATIONS
 
@@ -47,8 +50,14 @@ Space/
                 Makichika_ProtectorShield_P.pak
                 Makichika_CharonEvent_P.pak
                 Makichika_XmasEvent_P.pak
+                Makichika_DiscordAvatars_P.pak
             UIResources/
                 frontend/
+                    script/
+                        common.js
+                        player.js
+                    map/
+                        scoreboard.js
                     drafting/
                         drafting-script.js
                         mode-selector.js
@@ -56,6 +65,17 @@ Space/
                     views/
                         startgame/
                             startgame-script.js
+
+Bootstrapper/
+    resources/
+        app.asar
+        data/
+            Fractured Space.exe
+            discord-common.js
+            discord-player.js
+            discord-scoreboard.js
+            discord-default-avatar.png
+            Makichika_DiscordAvatars_P.pak
 
 A. DRAFT MENU - 3 FILES
 
@@ -79,8 +99,10 @@ Default destination folder:
 C:\Program Files (x86)\Steam\steamapps\common\Space\spacegame\Binaries\Win64
 
 Replace the existing Fractured Space.exe. Keep its exact filename.
-This one file includes the draft player list, missile warning and effect
-countdown fixes. Game-time countdowns require a compatible server.
+This one file includes the draft player list, missile warning, effect
+countdown and Discord avatar address fixes. The previous executable fixes
+are retained. Game-time countdowns require a compatible server. Discord
+avatars also require all files in section E and the Bootstrapper kept open.
 
 C. ADDITIONAL FIXES AND EVENTS - 5 PAK FILES
 
@@ -131,9 +153,83 @@ Replace the matching startgame-script.js after backing it up.
 The received order is kept within each group. No blank rows are added.
 This optional file can be installed on its own.
 
+E. DISCORD PROFILE AVATARS - GAME AND BOOTSTRAPPER FILES
+
+Install the updated executable from section B, then the files below.
+These avatar files are supplied together; install BOTH the game and
+Bootstrapper files. No player ID or configuration-file edit is needed.
+
+GAME FILES - 4 ADDITIONAL FILES
+
+Space\spacegame\Content\UIResources\frontend\script\common.js
+Space\spacegame\Content\UIResources\frontend\script\player.js
+Space\spacegame\Content\UIResources\frontend\map\scoreboard.js
+Space\spacegame\Content\Paks\Makichika_DiscordAvatars_P.pak
+
+Default destination root:
+C:\Program Files (x86)\Steam\steamapps\common\Space
+
+Copy each file to the matching path under YOUR actual Space folder.
+Keep the original BP.pak and the other installed PAK files.
+
+BOOTSTRAPPER FILES - 7 FILES
+
+Bootstrapper\resources\app.asar
+Bootstrapper\resources\data\Fractured Space.exe
+Bootstrapper\resources\data\discord-common.js
+Bootstrapper\resources\data\discord-player.js
+Bootstrapper\resources\data\discord-scoreboard.js
+Bootstrapper\resources\data\discord-default-avatar.png
+Bootstrapper\resources\data\Makichika_DiscordAvatars_P.pak
+
+The usual Bootstrapper installation folder is:
+%LOCALAPPDATA%\Programs\fractured-space-bootstrapper
+
+THIS PATH IS ONLY AN EXAMPLE. IF YOUR BOOTSTRAPPER IS INSTALLED ELSEWHERE,
+PUT THESE FILES IN YOUR OWN BOOTSTRAPPER INSTALLATION FOLDER INSTEAD.
+Use the folder containing fractured-space-bootstrapper.exe and resources.
+The resources folder from this download matches that existing resources
+folder. Do not create Bootstrapper/Bootstrapper or resources/resources.
+Do not copy the Bootstrapper files into Space or a temporary download folder.
+
+Close the game AND Bootstrapper before replacing app.asar or the executable.
+Copy the seven individual files to their matching locations and accept those
+replacements. Existing unrelated resource files must stay in place.
+The repair executable contains this repository's existing native fixes plus
+the avatar address change, so Bootstrapper repair retains those fixes.
+
+Sign in to the Bootstrapper with YOUR own Discord account, launch the game
+through it and KEEP THE BOOTSTRAPPER OPEN while playing. The connected
+account supplies its own hangar avatar automatically. No login config,
+password, token or fixed player ID is supplied in this repository.
+
+Each computer displaying Discord avatars needs this client/Bootstrapper
+update. A player whose avatar is displayed does not need the update.
+This is not restricted to a particular server: it uses Lifeline's public
+active-player list. Servers/players missing from that list, ambiguous names,
+missing custom avatars or an unavailable source can show the default image.
+The list is cached for 15 seconds. Immediate display of every late arrival
+is not guaranteed. No gameplay-server or Lifeline backend update is supplied.
+
+COMPATIBILITY AND TEST
+
+Bootstrapper Windows 1.1.0 and matching community patch-31 resources.
+This avatar PAK targets the normal scoreboard. Eye Assault is not included
+or required. A separate Eye Assault or other scoreboard override can take
+priority and needs its own compatible avatar change; do not overwrite your
+customized client/Bootstrapper blindly. Complete replacement files overwrite
+other changes within those same files, including custom LAN launchers.
+
+Restart fully, check your avatar in the hangar, join a listed server and
+check other human players' avatars in the scoreboard. Also test a player
+joining after you. Account lookup, HTTP lengths, package data and preservation
+checks passed; the owner's modified client displays avatars. This standard
+distribution on another computer remains to be confirmed in game.
+
 STEP 4 - RESTART THE GAME
 
-Start Fractured Space with your usual launcher.
+Start Fractured Space with your usual launcher. If you installed section E,
+launch through the updated Bootstrapper and keep it open.
 A complete game exit and relaunch is needed to load new PAK files.
 Changing server or map is not enough.
 
@@ -149,8 +245,8 @@ Keep your backups. Other client builds have not been verified.
 
 HOW TO UNINSTALL
 
-1. Close the game completely.
-2. Restore any replaced files from your backups.
+1. Close the game completely; also close Bootstrapper for avatar files.
+2. Restore any replaced game and Bootstrapper files from your backups.
 3. To remove an added PAK fix, remove only its matching Makichika PAK file.
    If you replaced an older version of that PAK, restore your backup instead.
 4. Restart the game.
@@ -443,7 +539,7 @@ After:  89410490
 
 Supplied executable size: 64652288 bytes.
 Current supplied executable SHA256:
-C9D56D3E41462378A48A9D7F9FA57B952A3C945CC1AF236CFF90C754F0D2C6E8
+FAEFBE37C6403FD1097EA5351711F364B1FBA421C20CAC002587B06C54D12F1E
 
 Verification executes 48 native x64 assertions at two ASLR bases and checks
 PE preservation, unwind records and Windows loader mapping. Unreal services
@@ -595,6 +691,38 @@ checked without requiring Eye Assault helper functions for ordinary ships.
 Executable, CSS, server-list script and the three earlier fix PAKs are
 unchanged by this event update.
 
+10. DISCORD PROFILE AVATARS (STANDARD SCOREBOARD)
+
+The connected account is resolved through the existing fixed Lifeline
+Discord bearercheck endpoint. Only validated public username, Discord ID
+and avatar hash are used; credentials are not returned through the local
+avatar bridge or sent to the image CDN. Cached/in-flight account results
+are isolated across login changes and logout. Other players are matched
+by exact names from Lifeline's public active-server feed, with ambiguous
+identities using the default image.
+
+Bootstrapper starts a loopback-only avatar service at 127.0.0.1:27173.
+Images come only from the fixed Discord CDN avatar path, with bounded
+requests/caching, PNG checks and exact positive Content-Length responses
+for the native game downloader. The Bootstrapper must remain open.
+
+The native executable update starts from the repository's existing build,
+not an older standard repair executable. Only the fixed-length UTF16 Steam
+avatar URL data is replaced with the loopback URL; all bytes outside that
+226-byte slot remain identical, including every previous native fix.
+File size and PE layout are unchanged. The Bootstrapper repair copy is
+byte-identical to the updated repository executable.
+
+The standard avatar PAK contains only W_ScoreboardPlayer.uasset and .uexp.
+Two avatar getter references use GetPlayerName instead of GetSteamIdString;
+avatar-only debug prints are disabled. The bot crew-portrait branch remains
+unchanged. No Eye Assault map or gameplay package is included.
+
+Frontend common.js loads avatars from the loopback bridge; player.js and
+the map scoreboard use player names. The archive adds avatar-bridge.js,
+account-avatar.js and avatar-server.js, with the startup hook and matching
+repair hashes. No manually entered or fixed player ID is required.
+
 ======================================================================
 PART 3 - SERVER CHANGES (REFERENCE ONLY)
 ======================================================================
@@ -683,7 +811,7 @@ These SHA256 values identify the supplied files.
 Checking them is optional and does not install or change anything.
 
 Space/spacegame/Binaries/Win64/Fractured Space.exe
-SHA256 C9D56D3E41462378A48A9D7F9FA57B952A3C945CC1AF236CFF90C754F0D2C6E8
+SHA256 FAEFBE37C6403FD1097EA5351711F364B1FBA421C20CAC002587B06C54D12F1E
 
 Space/spacegame/Content/UIResources/frontend/drafting/drafting-script.js
 SHA256 F0123B19191D9208581FD8A77DCD9C440AF1D8F3CFF1B6811DCE16AAFA5CFDB1
@@ -708,3 +836,39 @@ SHA256 8718ACFD43663CD9613A5C2993E2596B23F081B57490DB1BEEFE9826D491FDE2
 
 Space/spacegame/Content/Paks/Makichika_XmasEvent_P.pak
 SHA256 C20482888A928D878548DA0EF51073ABCDB7EF6BF9E3C51CFDB793BF5A419A48
+
+
+DISCORD AVATAR FILES AND BOOTSTRAPPER REPAIR COPIES
+
+Space/spacegame/Content/Paks/Makichika_DiscordAvatars_P.pak
+SHA256 9EF2D2F35D9EF8DF8A0E26258992A6E018DB5F47D50E2CEF8BC012017812A23C
+
+Space/spacegame/Content/UIResources/frontend/map/scoreboard.js
+SHA256 91A4D1342DBEE1786421EBA7AB138126E599EF5819881BA512F7D77F3D39368B
+
+Space/spacegame/Content/UIResources/frontend/script/common.js
+SHA256 42C777E308CBBBB147AD95C9BA84E116F696F8C9C98E800EE1F769A551B37D2C
+
+Space/spacegame/Content/UIResources/frontend/script/player.js
+SHA256 8E722A3A5205808FC84CAD489C0E9F0C70CCAC96BDC43BA58006400429C8FFAA
+
+Bootstrapper/resources/app.asar
+SHA256 DDA55121444D1CA1C98D5B52CFA982A626EEF6E302D475CACF8EF262EAD3822C
+
+Bootstrapper/resources/data/discord-common.js
+SHA256 42C777E308CBBBB147AD95C9BA84E116F696F8C9C98E800EE1F769A551B37D2C
+
+Bootstrapper/resources/data/discord-default-avatar.png
+SHA256 1ADFB2931C9F22B2A6D2BF61864A42AA96ADE3BF494DC657CCDCFEF875E98E06
+
+Bootstrapper/resources/data/discord-player.js
+SHA256 8E722A3A5205808FC84CAD489C0E9F0C70CCAC96BDC43BA58006400429C8FFAA
+
+Bootstrapper/resources/data/discord-scoreboard.js
+SHA256 91A4D1342DBEE1786421EBA7AB138126E599EF5819881BA512F7D77F3D39368B
+
+Bootstrapper/resources/data/Fractured Space.exe
+SHA256 FAEFBE37C6403FD1097EA5351711F364B1FBA421C20CAC002587B06C54D12F1E
+
+Bootstrapper/resources/data/Makichika_DiscordAvatars_P.pak
+SHA256 9EF2D2F35D9EF8DF8A0E26258992A6E018DB5F47D50E2CEF8BC012017812A23C

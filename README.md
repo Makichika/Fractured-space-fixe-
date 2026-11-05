@@ -5,6 +5,8 @@ Read [instructions for emplacement](instructions%20for%20emplacement.txt) for th
 
 **DO NOT COPY THE WHOLE FOLDER. ONLY COPY AND PASTE THE INDIVIDUAL FILES INTO THEIR SPECIFIED LOCATIONS.**
 
+For Discord avatars, also install the files from `Bootstrapper` into your own Bootstrapper installation folder. The path in the instructions is only an example: **use your actual Bootstrapper folder if its location is different**. Close the game and Bootstrapper before copying, then launch through the Bootstrapper and keep it open.
+
 All changes made so far. Client fixes are available on this GitHub; server fixes are installed on my servers.
 
 My servers are now always showing in the server list if my PC is on but without using any ressource until someone join.
@@ -38,13 +40,16 @@ MaxInternetClientRate=100000
 | **Client** | Fix the draft menu not showing other players/bot in pre-draft |
 | **Client** | Fix all Venturer skins |
 | **Client** | Fix missile red icons and warning sounds |
+| **Client + Bootstrapper** | Use the connected Discord profile avatar in the hangar and other players' Discord avatars in scoreboards |
 | **Client (optional)** | Group the online server list |
 | **Client** | Status effect countdowns follow game time instead of real time on compatible servers |
 | **Client** | Keep the Protector shield field visual independent of its personal shield status; fix its asynchronous effect-loading dependency |
 | **Client + compatible server** | Restore the Charon event maps, hidden sector, voice hooks and team resource notification (`conquestcharon`) |
 | **Client + compatible server** | Restore the Christmas event maps, Omega HUD and Ru-T0lf combat voice hooks (`conquestxmas`) |
 
-### Server fixes
+Discord avatars use the existing Lifeline account service and public active-player list. Each computer displaying them needs this client/Bootstrapper update; the players being displayed do not need it. It is not tied to a specific server, but players must be listed by Lifeline. This standard avatar fix does not include or require Eye Assault. No gameplay-server update or manually entered player ID is needed. See section E of the installation instructions for the complete file list and compatibility limits.
+
+### Server fixes and Global change
 
 | Type | Change |
 |---|---|
@@ -57,20 +62,12 @@ MaxInternetClientRate=100000
 | **Server** | No  time duration on Pre-draft; players need to write "ready" to start drafting |
 | **Server** | Allow players to vote on enemy bot difficulty in the PvE server; instructions appear in pre-draft chat |
 | **Server** | Fixe the paladin purge actually be 5s, to not waste a cooldown, the enemy being purged can't activate self effect only (self boost etc) |
-
-🌍 GLOBAL Servers change :
-
--Missile, buoy, miner are now immune to ship destruction damage.
-
--Target being harpooned or displaced now can't use jump drive for the duration.
-
--AI can now target miner if nobody is around.
-
--AI now ignore Mine once both team are at max lvl and stop shooting miner once the team is at max lvl.
-
--AI now keep shooting you when you jump, no more cheesing them.
-
--AI now prioritize the jump point in the middle of the base instead of the one far away so they can actually defend the capture zone.
+| **Server** | Make missiles, buoys and miners immune to ship destruction damage |
+| **Server** | Prevent harpooned or displaced targets from using jump drive for the effect duration |
+| **Server** | Let AI target miners when nobody is nearby |
+| **Server** | Make AI ignore mines once both teams are at max level and stop shooting miners once its team is at max level |
+| **Server** | Keep AI firing at ships during their jump |
+| **Server** | Make AI prioritize the central base jump point so it can defend the capture zone |
 
 🧪 Experimental Servers change :
 
