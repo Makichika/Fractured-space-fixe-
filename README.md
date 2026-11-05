@@ -60,9 +60,7 @@ The event PAKs require a server configured for the corresponding event and the u
 | **Server** | Allow players to vote on enemy bot difficulty in the PvE server; instructions appear in pre-draft chat |
 | **Server** | Fixe the paladin purge actually be 5s, to not waste a cooldown, the enemy being purged can't activate self effect only (self boost etc) |
 
-🧪 Experimental Servers change 
-
--Centurion's Overload damage from 3k to 4k.
+🌍 GLOBAL Servers change :
 
 -Missile, buoy, miner are now immune to ship destruction damage.
 
@@ -75,3 +73,7 @@ The event PAKs require a server configured for the corresponding event and the u
 -AI now keep shooting you when you jump, no more cheesing them.
 
 -AI now prioritize the jump point in the middle of the base instead of the one far away so they can actually defend the capture zone.
+
+🧪 Experimental Servers change 
+
+-Centurion's Overload damage from 3k to 4k.
