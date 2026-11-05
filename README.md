@@ -74,6 +74,6 @@ The event PAKs require a server configured for the corresponding event and the u
 
 -AI now prioritize the jump point in the middle of the base instead of the one far away so they can actually defend the capture zone.
 
-🧪 Experimental Servers change 
+🧪 Experimental Servers change :
 
 -Centurion's Overload damage from 3k to 4k.
