@@ -7,7 +7,7 @@ Read [instructions for emplacement](instructions%20for%20emplacement.txt) for th
 
 For Discord avatars, also install the files from `Bootstrapper` into your own Bootstrapper installation folder. The path in the instructions is only an example: **use your actual Bootstrapper folder if its location is different**. Close the game and Bootstrapper before copying.
 
-All changes made so far. Client fixes are available on this GitHub; server fixes are installed on my servers.
+Server fixes are installed on my servers.
 
 My servers are now always showing in the server list if my PC is on but without using any ressource until someone join.
 
