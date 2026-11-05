@@ -52,7 +52,7 @@ MaxInternetClientRate=100000
 
 | Type | Change |
 |---|---|
-| **Server** | Fix Aegis consuming energy twice when using its primary ability |
+| **Server** | Fix Aegis consuming energy twice when using its particle accelerator |
 | **Server** | Fix Last Stand crashes and force players onto the human team (team assignment fix by Tiger) |
 | **Server** | Enable the pre-draft lobby and drafting across all my servers |
 | **Server** | Fix players getting stuck loading when joining an occupied pre-draft lobby |
