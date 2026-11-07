@@ -5,45 +5,6 @@ Read [instructions for emplacement](instructions%20for%20emplacement.txt) for th
 
 **DO NOT COPY THE WHOLE FOLDER. ONLY COPY AND PASTE THE INDIVIDUAL FILES INTO THEIR SPECIFIED LOCATIONS.**
 
-Space/
-    spacegame/
-        Binaries/
-            Win64/
-                Fractured Space.exe
-        Content/
-            Paks/
-                Makichika_MapJamming_P.pak
-                Makichika_VenturerSkins_P.pak
-                Makichika_ProtectorShield_P.pak
-                Makichika_CharonEvent_P.pak
-                Makichika_XmasEvent_P.pak
-                Makichika_DiscordAvatars_P.pak
-            UIResources/
-                frontend/
-                    script/
-                        common.js
-                        player.js
-                    map/
-                        scoreboard.js
-                    drafting/
-                        drafting-script.js
-                        mode-selector.js
-                        drafting-style.css
-                    views/
-                        startgame/
-                            startgame-script.js
-
-Bootstrapper/
-    resources/
-        app.asar
-        data/
-            Fractured Space.exe
-            discord-common.js
-            discord-player.js
-            discord-scoreboard.js
-            discord-default-avatar.png
-            Makichika_DiscordAvatars_P.pak
-
 For Discord avatars, also install the files from `Bootstrapper` into your own Bootstrapper installation folder. The path in the instructions is only an example: **use your actual Bootstrapper folder if its location is different**. Close the game and Bootstrapper before copying.
 
 Server fixes are installed on my servers.
