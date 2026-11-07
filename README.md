@@ -1,6 +1,8 @@
 ### Installation CLICK ON CODE AND DOWNLOAD ZIP ON TOP RIGHT OF THIS PAGE, don't forget to unlock the file in properties
 ### !!!BACK UP YOUR FILE BEFORE JUST IN CASE!!!
 
+Work on W10 11, not tested for linux or W7 you have to tell me if you test it 
+
 Read [instructions for emplacement](instructions%20for%20emplacement.txt) for the file locations and installation steps.
 
 **DO NOT COPY THE WHOLE FOLDER. ONLY COPY AND PASTE THE INDIVIDUAL FILES INTO THEIR SPECIFIED LOCATIONS.**
